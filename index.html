@@ -933,13 +933,15 @@
     }
 
     .testi-item img {
-      width: auto; /* Natural width */
-      max-width: 100%; /* Fit container but don't stretch */
+      width: auto;
+      /* Natural width */
+      max-width: 100%;
+      /* Fit container but don't stretch */
       height: auto;
-      border: 1px solid rgba(191,140,44,0.15);
+      border: 1px solid rgba(191, 140, 44, 0.15);
       border-radius: 4px;
       display: block;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
     }
 
     .testi-name-simple {
@@ -957,28 +959,46 @@
       .testi-feed {
         gap: 4rem;
       }
+
       .testi-header h2 {
-         font-size: 2.2rem;
+        font-size: 2.2rem;
       }
     }
 
-    /* ── LIGHTBOX ── */
+    /* ── LIGHTBOX (VISOR) - Estructura Reforzada ── */
     #testiLightbox {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(12, 10, 9, 0.98);
       z-index: 2000;
-      padding: 0; /* No padding to maximize space */
       cursor: zoom-out;
-      justify-content: center;
-      align-items: flex-start;
-      backdrop-filter: blur(12px);
-      overflow: auto; /* Allow scrolling in both directions */
+      background: transparent;
+      /* Fondo en capa separada para evitar bugs de fijación */
     }
 
     #testiLightbox.active {
       display: flex;
+    }
+
+    /* Capa de fondo con el desenfoque para que no afecte a la fijeza de la cruz */
+    .lightbox-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 2001;
+    }
+
+    /* Área de scroll aislada */
+    .lightbox-scroll-area {
+      position: absolute;
+      inset: 0;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2002;
     }
 
     .lightbox-content {
@@ -988,54 +1008,47 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
     }
 
     .lightbox-content img {
-      width: 115%; /* Balanced zoom for legibility without over-scrolling */
-      max-width: none;
+      width: 100%;
+      max-width: 800px;
       height: auto;
       object-fit: contain;
-      box-shadow: 0 0 60px rgba(0,0,0,0.6);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
       border-radius: 4px;
-      cursor: default;
-      margin-left: -7.5%; /* Center the 115% width */
-      margin-top: 80px; /* Safe space to prevent 'X' button from covering text */
-      margin-bottom: 60px;
+      cursor: zoom-in;
+      transition: width 0.3s ease;
+      margin: auto;
     }
 
-    /* On Desktop, keep image standard and no negative margins */
-    @media (min-width: 900px) {
-      .lightbox-content img {
-        width: 100%;
-        max-width: 850px;
-        margin-left: 0;
-      }
-      .lightbox-content {
-        padding: 2rem;
-      }
-      .testi-item img {
-        cursor: default !important; /* Disable zoom-in cursor on desktop */
-      }
+    .lightbox-content img.zoomed {
+      width: 180%;
+      max-width: none;
+      cursor: zoom-out;
     }
 
+    /* CRUZ DE CIERRE: Ahora 100% fija respecto a la pantalla del móvil */
     .lightbox-close {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
+      top: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
       color: white;
-      font-size: 1.5rem;
-      background: var(--bordo); /* Solid background to ensure visibility */
-      border: 1px solid var(--dorado);
+      font-size: 1.8rem;
+      background: var(--bordo);
+      border: 2px solid var(--dorado);
       border-radius: 50%;
       cursor: pointer;
-      z-index: 2001;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      z-index: 3000;
+      /* Siempre por encima de todo */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
 
     .lightbox-close:hover {
@@ -1043,13 +1056,14 @@
       color: var(--carbon);
     }
 
+
     .testi-item img {
-      /* Only show zoom cursor on mobile for images that ARE zoomable */
       cursor: default;
       transition: transform 0.3s ease, filter 0.3s ease;
     }
-    @media (max-width: 900px) {
-      .testi-item img:not(.no-zoom) { cursor: zoom-in; }
+
+    .testi-item img:not(.no-zoom) {
+      cursor: zoom-in;
     }
 
     .testi-item img:hover {
@@ -1850,7 +1864,8 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow">Programa de 4 encuentros semanales · Comienza Lunes 11 de Mayo 19hs (ARG) · Inversión: $45.000 / USD 45
+      <div class="hero-eyebrow">Programa de 4 encuentros semanales · Comienza Lunes 27 de Abril 19hs (ARG) · Inversión:
+        $45.000 / USD 45
       </div>
       <h1 class="hero-title">Sentir desde<br>Adentro</h1>
       <div class="hero-title-sub serif-italic">Aprende A Escucharte</div>
@@ -2158,7 +2173,8 @@
         </div>
 
         <div class="price-date-box" style="background: rgba(191,140,44,0.05);">
-          <div class="date-info" style="font-size: 1rem;"> 🗓️ Comienzo Lunes 11 de Mayo 19hs (ARG) (Total 4 Lunes)</div>
+          <div class="date-info" style="font-size: 1rem;"> 🗓️ Comienzo Lunes 27 de Abril 19hs (ARG) (Total 4 Lunes)
+          </div>
         </div>
 
         <ul class="price-includes">
@@ -2257,7 +2273,8 @@
           ¿Cuándo son los encuentros?
           <div class="faq-icon">+</div>
         </button>
-        <div class="faq-a">Los encuentros comienzan el <strong>Lunes 11 de Mayo a las 19hs (ARG)</strong>, con los 3 lunes
+        <div class="faq-a">Los encuentros comienzan el <strong>Lunes 27 de Abril a las 19hs (ARG)</strong>, con los 3
+          lunes
           siguientes.
           Un encuentro por semana, durante 4 semanas.
         </div>
@@ -2377,12 +2394,15 @@
     </div>
   </footer>
 
-  <!-- LIGHTBOX STRUCTURE -->
-  <div id="testiLightbox" onclick="closeLightbox()">
-    <div class="lightbox-content" onclick="event.stopPropagation()">
-      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-      <img id="lightboxImg" src="" alt="Testimonio ampliado">
+  <!-- LIGHTBOX STRUCTURE - Reforzada -->
+  <div id="testiLightbox">
+    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+    <div class="lightbox-scroll-area" onclick="closeLightbox()">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <img id="lightboxImg" src="" alt="Testimonio ampliado">
+      </div>
     </div>
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
   </div>
 
   <script>
@@ -2396,16 +2416,31 @@
 
     function closeLightbox() {
       const lightbox = document.getElementById('testiLightbox');
+      const img = document.getElementById('lightboxImg');
       lightbox.classList.remove('active');
+      img.classList.remove('zoomed'); // Reset zoom on close
       document.body.style.overflow = ''; // Restore scrolling
     }
 
-    // Attach click events only on mobile screens AND only for zoomable images
+    // Toggle zoom logic for desktop/mouse users
+    document.getElementById('lightboxImg').addEventListener('click', function (e) {
+      e.stopPropagation();
+      this.classList.toggle('zoomed');
+      // Reset scroll position on toggle
+      if (!this.classList.contains('zoomed')) {
+        document.getElementById('testiLightbox').scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    });
+
+    // Función para el desplazamiento lateral con flechas
+    function scrollLightbox(amount) {
+      document.getElementById('testiLightbox').scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    // Attach click events for all screens - zoomable images only
     document.querySelectorAll('.testi-item img:not(.no-zoom)').forEach(img => {
       img.addEventListener('click', () => {
-        if (window.innerWidth < 900) {
-          openLightbox(img.src);
-        }
+        openLightbox(img.src);
       });
     });
 
