@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sentir desde Adentro · Ani Franza M.</title>
   <meta name="description"
-    content="Soberanía Emocional. Programa de 4 encuentros semanales donde vas a recorrer el camino de regreso: de las emociones como problema, a las emociones como brújula.">
+    content="Aprende A Escucharte. Programa de 4 encuentros semanales donde vas a recorrer el camino de regreso: de las emociones como problema, a las emociones como brújula.">
   <meta name="keywords"
-    content="Coaching, Emociones, Soberanía Emocional, Ani Franza M., Desarrollo Personal, Crecimiento, Gestalt, Constelaciones">
+    content="Coaching, Emociones, Aprende A Escucharte, Ani Franza M., Desarrollo Personal, Crecimiento, Gestalt, Constelaciones">
   <meta property="og:title" content="Sentir desde Adentro · Ani Franza M.">
   <meta property="og:description"
-    content="Descubrí el programa de 4 encuentros semanales para tu soberanía emocional. No venís a aprender técnicas, venís a recordar algo que ya sabés en el cuerpo.">
+    content="Descubrí el programa de 4 encuentros semanales: Aprende A Escucharte. No venís a aprender técnicas, venís a recordar algo que ya sabés en el cuerpo.">
   <meta property="og:image" content="hero_abstract.png">
   <meta property="og:type" content="website">
   <link rel="icon" href="favicon.png" type="image/png">
@@ -891,10 +891,10 @@
       line-height: 1.7;
     }
 
-    /* ── TESTIMONIALS ────────────────────────────── */
+    /* ── TESTIMONIALS  ── */
     #testimonios {
       background: var(--bordo);
-      padding: 7rem 6rem;
+      padding: 7rem 0;
       overflow: hidden;
       position: relative;
     }
@@ -914,125 +914,52 @@
       font-style: italic;
     }
 
-    .testi-container {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 4rem;
-    }
-
-    .testi-grid {
-      display: flex;
-      overflow-x: auto;
-      gap: 2rem;
-      padding: 2rem 0;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      /* Hide scrollbar */
-      -ms-overflow-style: none;
-      /* Hide scrollbar */
-      -webkit-overflow-scrolling: touch;
-      cursor: grab;
-    }
-
-    .testi-grid::-webkit-scrollbar {
-      display: none;
-    }
-
-    .testi-grid:active {
-      cursor: grabbing;
-    }
-
-    .testi-card {
-      background: rgba(26, 20, 16, 0.4);
-      padding: 3rem;
-      border-top: 1px solid rgba(191, 140, 44, 0.2);
-      flex: 0 0 calc(50% - 1rem);
-      /* 2 per view on desktop */
-      scroll-snap-align: start;
-      transition: all 0.4s ease;
-      min-height: 280px;
+    .testi-feed {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      gap: 5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    @media (max-width: 900px) {
-      .testi-card {
-        flex: 0 0 90%;
-        /* 1 per view on mobile */
-      }
-
-      .testi-container {
-        padding: 0 1rem;
-      }
+    .testi-item {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .testi-card p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-style: italic;
-      color: var(--arena);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      opacity: 0.95;
+    .testi-item img {
+      width: auto; /* Natural width */
+      max-width: 100%; /* Fit container but don't stretch */
+      height: auto;
+      border: 1px solid rgba(191,140,44,0.15);
+      border-radius: 4px;
+      display: block;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.3);
     }
 
-    .testi-name {
+    .testi-name-simple {
       font-size: 0.85rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--dorado);
       font-weight: 500;
-    }
-
-    /* Carousel Nav Buttons */
-    .testi-nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
       margin-top: 1.5rem;
-      align-items: center;
+      text-align: center;
+      opacity: 0.8;
     }
 
-    .nav-btn {
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(191, 140, 44, 0.3);
-      background: transparent;
-      color: var(--dorado);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 50%;
-      font-size: 1.2rem;
-    }
-
-    .nav-btn:hover {
-      background: var(--dorado);
-      color: var(--carbon);
-      border-color: var(--dorado);
-    }
-
-    .testi-dots {
-      display: flex;
-      gap: 0.6rem;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(191, 140, 44, 0.2);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .dot.active {
-      background: var(--dorado);
-      transform: scale(1.2);
+    @media (max-width: 768px) {
+      .testi-feed {
+        gap: 4rem;
+      }
+      .testi-header h2 {
+         font-size: 2.2rem;
+      }
     }
 
     /* ── QUOTE BOX ───────────────────────────────── */
@@ -1630,20 +1557,96 @@
 
     .footer-socials {
       display: flex;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .footer-socials a {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gris);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(191, 140, 44, 0.05);
+      border: 1px solid rgba(191, 140, 44, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dorado);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
-      transition: color 0.3s;
     }
 
     .footer-socials a:hover {
-      color: var(--dorado);
+      background: var(--dorado);
+      color: var(--carbon);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(191, 140, 44, 0.2);
+    }
+
+    .footer-socials svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .footer-socials a.wa:hover {
+      border-color: #25D366;
+      color: #25D366;
+      background: rgba(37, 211, 102, 0.1);
+    }
+
+    .footer-socials a.ig:hover {
+      border-color: #E4405F;
+      color: #E4405F;
+      background: rgba(228, 64, 95, 0.1);
+    }
+
+    .footer-socials a.yt:hover {
+      border-color: #FF0000;
+      color: #FF0000;
+      background: rgba(255, 0, 0, 0.1);
+    }
+
+    .footer-socials a.lt:hover {
+      border-color: #39E09B;
+      color: #39E09B;
+      background: rgba(57, 224, 155, 0.1);
+    }
+
+    /* For solid hover on dark */
+    .footer-socials a:hover svg {
+      fill: currentColor;
+    }
+
+    /* Tooltip styles */
+    .footer-socials a {
+      position: relative;
+    }
+
+    .footer-socials a::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--carbon);
+      color: var(--arena);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.65rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      border: 1px solid rgba(191, 140, 44, 0.2);
+      z-index: 10;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-socials a:hover::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
     }
 
     /* ── DECORATIVE SVG MANDALA ──────────────────── */
@@ -1752,10 +1755,10 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow">Programa de 4 encuentros semanales · Comienzo a definir cuando se complete cupo mínimo ·
-        60 min c/u</div>
+      <div class="hero-eyebrow">Programa de 4 encuentros semanales · Comienza Lunes 11 de Mayo 19hs (ARG) · Inversión: $45.000 / USD 45
+      </div>
       <h1 class="hero-title">Sentir desde<br>Adentro</h1>
-      <div class="hero-title-sub serif-italic">Soberanía Emocional</div>
+      <div class="hero-title-sub serif-italic">Aprende A Escucharte</div>
       <p class="hero-desc">
         No venís a aprender técnicas. Venís a recordar algo que ya sabés
         en el cuerpo pero que el ruido del mundo te hizo olvidar:
@@ -1866,7 +1869,7 @@
         <span class="who-icon">🔥</span>
         <h3>La persona que<br>evita o explota</h3>
         <p>O tapás lo que sentís hasta que ya no podés, o reaccionás de formas que después no reconocés. Buscamos un
-          compromiso real con tu proceso, para pasar de la reacción a la soberanía emocional.</p>
+          compromiso real con tu proceso, para pasar de la reacción a Aprender A Escucharte.</p>
       </div>
       <div class="who-card reveal">
         <span class="who-icon">🧭</span>
@@ -1923,41 +1926,39 @@
       <h2>Testimonios</h2>
     </div>
 
-    <div class="testi-container reveal">
-      <div class="testi-grid">
-        <div class="testi-card">
-          <p>"Llegué a Anabella con una parálisis que me restringía en muchos sentidos, tanto personal como en mi
-            negocio y no solamente me ayudó a salir de esa parálisis sino que también a entender que era por un cambio
-            de propósito que estaba transitando."</p>
-          <div class="testi-name">Flavia Garnica</div>
-        </div>
-        <div class="testi-card">
-          <p>"Ani me ayudó a ver cosas que no veía, con mucho respeto y paciencia, pude superar un estado de angustia
-            referente a la vida de mi hija, aprendiendo que somos personas diferentes y que la vida de ella no es ni va
-            ser como la mía."</p>
-          <div class="testi-name">Erica B.</div>
-        </div>
-        <div class="testi-card">
-          <p>"Mejoró mi comunicación. Aprendí a validar lo que a mis hijos les hace felices. Mi experiencia con Ani,
-            Coach Ontológico con Inteligencia Emocional."</p>
-          <div class="testi-name">Sergio Bernal</div>
-        </div>
-        <div class="testi-card">
-          <p>"Empecé quebrada, sin rumbo. Junto a Ani logré reencontrarme, tomar decisiones y lo más importante
-            valorarme. No hubiera sido posible sin su ayuda."</p>
-          <div class="testi-name">Vanessa</div>
-        </div>
-        <div class="testi-card">
-          <p>"La sesión de hoy logró aflorar emociones que a veces escondo, aún no encuentro el por qué. Quiero
-            permitirme sacar esas emociones, poder ponerles nombre, poder identificarlas. Siento alivio."</p>
-          <div class="testi-name">Romina</div>
-        </div>
+    <div class="testi-feed reveal">
+      <div class="testi-item">
+        <img src="MateoRissoPatron_sin fecha.png" alt="Testimonio Mateo Risso Patron">
       </div>
-
-      <div class="testi-nav">
-        <button class="nav-btn prev" id="prevBtn">←</button>
-        <div class="testi-dots" id="testiDots"></div>
-        <button class="nav-btn next" id="nextBtn">→</button>
+      <div class="testi-item">
+        <img src="AnaMaria_sin fecha.png" alt="Testimonio Ana maria">
+      </div>
+      <div class="testi-item">
+        <img src="rociovanessa_sin fecha.png" alt="Testimonio ROCIOVANESA">
+      </div>
+      <div class="testi-item">
+        <img src="maria_sin fecha.png" alt="Testimonio Maria">
+      </div>
+      <div class="testi-item">
+        <img src="gabriela susana_sin fecha.png" alt="Testimonio Gabriela Susana">
+      </div>
+      <div class="testi-item">
+        <img src="sergiogarzon_sin fecha.png" alt="Testimonio Sergio Garzón">
+      </div>
+      <div class="testi-item">
+        <img src="flavia garnica_sin fecha.jpg" alt="Testimonio Flavia Garnica">
+        <div class="testi-name-simple">Flavia Garnica</div>
+      </div>
+      <div class="testi-item">
+        <img src="Erika Baier_sin fecha.jpg" alt="Testimonio Erica Baier">
+        <div class="testi-name-simple">Erika Baier</div>
+      </div>
+      <div class="testi-item">
+        <img src="Romina_sin fecha.jpg" alt="Testimonio Romina">
+        <div class="testi-name-simple">Romina</div>
+      </div>
+      <div class="testi-item">
+        <img src="daniel_sin fecha.png" alt="Testimonio Daniel">
       </div>
     </div>
   </section>
@@ -1990,7 +1991,7 @@
       </p>
 
       <div class="quote-box">
-        <blockquote>"Soy sólo un alma humana, tocando otra alma humana."</blockquote>
+        <blockquote>"Soy sólo un alma humana, tocando a otra alma humana."</blockquote>
       </div>
 
       <p>
@@ -2003,20 +2004,29 @@
       <p><strong>Cuando algo se ordena por dentro, también cambia y se re-ordena la forma de vivirlo por fuera.</strong>
       </p>
 
-      <div class="logos-formacion reveal" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(122, 106, 96, 0.2);">
-        <p style="font-size: 0.8rem; color: var(--gris); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">Formación y Avales</p>
+      <div class="logos-formacion reveal"
+        style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(122, 106, 96, 0.2);">
+        <p
+          style="font-size: 0.8rem; color: var(--gris); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
+          Formación y Avales</p>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; align-items: start;">
           <div style="text-align: center; max-width: 130px;">
-            <img src="LOGO_ECOCOACHING.png" alt="Eco Coaching" style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Coaching Ontológico Profesional y<br>Diplomatura en Inteligencia Emocional</p>
+            <img src="LOGO_ECOCOACHING.png" alt="Eco Coaching"
+              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
+            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Coaching Ontológico
+              Profesional y<br>Diplomatura en Inteligencia Emocional</p>
           </div>
           <div style="text-align: center; max-width: 130px;">
-            <img src="logo_CuerpoMenteAlma.png" alt="Grupo Cuerpo Mente Alma" style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Diplomado Internacional en Medicina<br>Cuerpo Mente Alma y Biodescodificación</p>
+            <img src="logo_CuerpoMenteAlma.png" alt="Grupo Cuerpo Mente Alma"
+              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
+            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Diplomado
+              Internacional en Medicina<br>Cuerpo Mente Alma y Biodescodificación</p>
           </div>
           <div style="text-align: center; max-width: 130px;">
-            <img src="logo_ColegioUniversitarioIES.jpg" alt="IES Siglo 21" style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Administración de Empresas<br>de Logística</p>
+            <img src="logo_ColegioUniversitarioIES.jpg" alt="IES Siglo 21"
+              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
+            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Administración de
+              Empresas<br>de Logística</p>
           </div>
         </div>
       </div>
@@ -2053,7 +2063,7 @@
         </div>
 
         <div class="price-date-box" style="background: rgba(191,140,44,0.05);">
-          <div class="date-info" style="font-size: 1rem;"> 🗓️ Comienzo a definir cuando se complete cupo mínimo</div>
+          <div class="date-info" style="font-size: 1rem;"> 🗓️ Comienzo Lunes 11 de Mayo 19hs (ARG) (Total 4 Lunes)</div>
         </div>
 
         <ul class="price-includes">
@@ -2062,7 +2072,7 @@
           <li>Acceso a comunidad de práctica</li>
           <li>Soporte de Ani durante el proceso</li>
         </ul>
-        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%2C+quiero+reservar+mi+lugar+en+el+Programa+Grupal"
+        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%2C+quiero+anotarme+ahora+en+el+Programa+Grupal+Sentir+Desde+Adentro"
           class="price-btn"
           style="background: var(--dorado); color: var(--carbon); font-weight: 700; box-shadow: 0 4px 15px rgba(191,140,44,0.3);"
           target="_blank">Quiero anotarme ahora</a>
@@ -2102,10 +2112,19 @@
       </div>
     </div>
 
-    <div class="promesa-valor reveal" style="max-width: 800px; margin: 4rem auto 2rem; padding: 2.5rem 2rem; background: rgba(58, 31, 15, 0.4); border: 1px solid var(--dorado); border-radius: 4px; text-align: left; position: relative;">
-      <div style="position: absolute; top: -12px; left: 30px; background: var(--carbon); padding: 0 10px; color: var(--dorado); font-size: 1.2rem;">✦</div>
-      <h3 style="color: var(--dorado); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 400;">Mi Compromiso Intransferible</h3>
-      <p style="font-size: 1.05rem; color: var(--arena); font-style: italic; margin-bottom: 0; line-height: 1.8;">"No puedo prometerte magia ni atajos, porque este es un proceso real. Pero sí te prometo esto: un espacio 100% seguro, confidencial y libre de juicios, sostenido con honestidad, presencia absoluta y herramientas probadas. Mi mayor inversión en vos es el tiempo, la energía y el compromiso de acompañarte a reconectar con tu propia brújula."</p>
+    <div class="promesa-valor reveal"
+      style="max-width: 800px; margin: 4rem auto 2rem; padding: 2.5rem 2rem; background: rgba(58, 31, 15, 0.4); border: 1px solid var(--dorado); border-radius: 4px; text-align: left; position: relative;">
+      <div
+        style="position: absolute; top: -12px; left: 30px; background: var(--carbon); padding: 0 10px; color: var(--dorado); font-size: 1.2rem;">
+        ✦</div>
+      <h3
+        style="color: var(--dorado); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 400;">
+        Mi Compromiso Intransferible</h3>
+      <p style="font-size: 1.05rem; color: var(--arena); font-style: italic; margin-bottom: 0; line-height: 1.8;">"No
+        puedo prometerte magia ni atajos, porque este es un proceso real. Pero sí te prometo esto: un espacio 100%
+        seguro, confidencial y libre de juicios, sostenido con honestidad, presencia absoluta y herramientas probadas.
+        Mi mayor inversión en vos es el tiempo, la energía y el compromiso de acompañarte a reconectar con tu propia
+        brújula."</p>
     </div>
 
     <p class="inscripcion-note">
@@ -2143,9 +2162,9 @@
           ¿Cuándo son los encuentros?
           <div class="faq-icon">+</div>
         </button>
-        <div class="faq-a">Los encuentros son con <strong>comienzo a definir cuando se complete el cupo mínimo</strong>.
+        <div class="faq-a">Los encuentros comienzan el <strong>Lunes 11 de Mayo a las 19hs (ARG)</strong>, con los 3 lunes
+          siguientes.
           Un encuentro por semana, durante 4 semanas.
-          <!-- ¿Estás en otro país? Escribime por WhatsApp y calculamos el horario juntos. -->
         </div>
       </div>
       <!-- texto oculto -->
@@ -2186,11 +2205,11 @@
           ¿Esto reemplaza una terapia?
           <div class="faq-icon">+</div>
         </button>
-        <div class="faq-a">No. Sentir desde Adentro es un programa de desarrollo personal y soberanía emocional — no es
+        <div class="faq-a">No. Sentir desde Adentro es un programa de desarrollo personal enfocado en Aprender A
+          Escucharte — no es
           psicoterapia ni reemplaza ningún proceso terapéutico que estés haciendo. Puede complementarlo muy bien, pero
           no lo reemplaza.</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           Leí toda la página y me quedan dudas, qué hago?
@@ -2213,9 +2232,9 @@
     </p>
 
     <div class="contact-links reveal">
-      <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%2C+quiero+reservar+mi+lugar+en+Sentir+desde+Adentro&type=phone_number&app_absent=0"
+      <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Vengo+desde+tu+web+y+quiero+anotarme+en+el+Programa+Sentir+desde+Adentro"
         class="contact-link wa" target="_blank">
-        💬 Reservar por WhatsApp
+        💬 Quiero anotarme por WhatsApp
       </a>
     </div>
   </section>
@@ -2226,15 +2245,40 @@
     <div class="footer-copy">
       © 2026 · Córdoba, Argentina · @anifranzam<br>
       <div style="margin-top: 12px; font-size: 0.9rem;">
-        <a href="terminos.html" style="color: inherit; text-decoration: none; opacity: 0.6; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Términos y Condiciones</a>
+        <a href="terminos.html" style="color: inherit; text-decoration: none; opacity: 0.6; transition: opacity 0.3s;"
+          onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Términos y Condiciones</a>
         <span style="opacity: 0.3; margin: 0 10px;">|</span>
-        <a href="privacidad.html" style="color: inherit; text-decoration: none; opacity: 0.6; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Políticas de Privacidad</a>
+        <a href="privacidad.html" style="color: inherit; text-decoration: none; opacity: 0.6; transition: opacity 0.3s;"
+          onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Políticas de Privacidad</a>
       </div>
     </div>
     <div class="footer-socials">
-      <a href="https://www.instagram.com/anifranzam" target="_blank">Instagram</a>
-      <a href="https://www.youtube.com/@anifranzam" target="_blank">YouTube</a>
-      <a href="https://linktr.ee/anifranzam" target="_blank">Linktree</a>
+      <a href="https://api.whatsapp.com/send/?phone=5493513508205" class="wa" target="_blank" title="WhatsApp"
+        data-tooltip="WhatsApp">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.516.893 3.003 1.337 4.769 1.338 5.487 0 9.953-4.466 9.956-9.956.002-2.661-1.033-5.161-2.91-7.04s-4.379-2.912-7.042-2.913c-5.489 0-9.954 4.465-9.958 9.956-.001 1.831.501 3.613 1.45 5.174l-1.092 3.993 4.1-.752zm11.454-7.466c-.309-.155-1.833-.905-2.113-1.006-.28-.1-.485-.155-.688.155-.205.31-.79.991-.97 1.192-.18.2-.361.226-.67.071-.31-.155-1.306-.481-2.486-1.534-.919-.819-1.54-1.832-1.72-2.143-.18-.309-.018-.477.137-.63.139-.138.31-.36.465-.541.155-.181.205-.31.309-.516.105-.206.052-.387-.025-.541-.077-.155-.688-1.653-.943-2.268-.248-.598-.501-.517-.688-.527l-.587-.01c-.205 0-.541.077-.825.387s-1.084 1.057-1.084 2.58c0 1.522 1.109 2.993 1.264 3.2 1.55 2.043 3.324 3.12 5.068 3.86 1.745.74 2.872.936 3.911.78l1.706-.25c.31-.045.825-.335 1.056-.993.23-.655.23-1.21.161-1.328-.1-.137-.417-.301-.842-.491z" />
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/anifranzam" class="ig" target="_blank" title="Instagram"
+        data-tooltip="Instagram">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.475 1.382.897.422.422.68.822.897 1.382.164.422.359 1.057.412 2.227.059 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.475.96-.897 1.382-.422.422-.822.68-1.382.897-.422.164-1.057.359-2.227.412-1.266.059-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.475-1.382-.897-.422-.422-.68-.822-.897-1.382-.164-.422-.359-1.057-.412-2.227-.059-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.475-.96.897-1.382.422-.422.822-.68 1.382-.897.422-.164 1.057-.359 2.227-.412 1.266-.059 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.057-2.15.26-2.914.557-.79.307-1.459.718-2.124 1.383-.665.665-1.076 1.334-1.383 2.124-.297.764-.501 1.637-.557 2.914-.059 1.28-.073 1.688-.073 4.947s.014 3.667.072 4.947c.057 1.277.26 2.15.557 2.914.307.79.718 1.459 1.383 2.124.665.665 1.334 1.076 2.124 1.383.764.297 1.637.501 2.914.557 1.28.059 1.688.073 4.947.073s3.667-.014 4.947-.072c1.277-.057 2.15-.26 2.914-.557.79-.307 1.459-.718 2.124-1.383.665-.665 1.076-1.334 1.383-2.124.297-.764.501-1.637.557-2.914.059-1.28.073-1.688.073-4.947s-.014-3.667-.072-4.947c-.057-1.277-.26-2.15-.557-2.914-.307-.79-.718-1.459-1.383-2.124-.665-.665-1.334-1.076-2.124-1.383-.764-.297-1.637-.501-2.914-.557-1.28-.059-1.688-.073-4.947-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44-1.44-.645-1.44-1.44.645-1.44 1.441-1.44z" />
+        </svg>
+      </a>
+      <a href="https://www.youtube.com/@anifranzam" class="yt" target="_blank" title="YouTube" data-tooltip="YouTube">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z" />
+        </svg>
+      </a>
+      <a href="https://linktr.ee/anifranzam" class="lt" target="_blank" title="Linktree" data-tooltip="Linktree">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M13.511 19.071l4.032-4.103h-2.502s.534-4.522.617-5.023c.083-.5.183-1.017.183-1.017l4.004-4.004-.701-.701-4.12 4.12s-.217 2.37-.3 3.237c-.084.868-.134 1.418-.134 1.418H12.72l.017-10.75h-.934l-.017 10.75H9.923s-.05-1.05-.133-1.918c-.083-.867-.3-3.237-.3-3.237L5.37 3.523l-.701.701 4.004 4.004s.1 1.017.183 1.017c.083.5.617 5.023.617 5.023H6.971l4.032 4.103V22.5h2.508v-3.429z" />
+        </svg>
+      </a>
     </div>
   </footer>
 
@@ -2297,90 +2341,6 @@
       });
     });
 
-    // ── TESTIMONIALS CIRCULAR SLIDER ─────────────────
-    const slider = document.querySelector('.testi-grid');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('testiDots');
-    const initialCards = Array.from(document.querySelectorAll('.testi-card'));
-
-    // Create dots (always for the original 5)
-    initialCards.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        slider.scrollTo({
-          left: initialCards[i].offsetLeft - slider.offsetLeft,
-          behavior: 'smooth'
-        });
-      });
-      dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.dot');
-
-    // Update dots on scroll (Center-based sync)
-    slider.addEventListener('scroll', () => {
-      const scrollPos = slider.scrollLeft;
-      const width = slider.offsetWidth;
-      initialCards.forEach((card, i) => {
-        const center = card.offsetLeft + card.offsetWidth / 2 - slider.offsetLeft;
-        const containerCenter = scrollPos + width / 2;
-        if (Math.abs(center - containerCenter) < width / 3) {
-          dots.forEach(d => d.classList.remove('active'));
-          dots[i].classList.add('active');
-        }
-      });
-    });
-
-    // Nav buttons with Circular Logic
-    nextBtn.addEventListener('click', () => {
-      const maxScroll = slider.scrollWidth - slider.offsetWidth;
-      if (slider.scrollLeft >= maxScroll - 10) {
-        slider.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        const cardWidth = initialCards[0].offsetWidth + 16; // width + gap
-        slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (slider.scrollLeft <= 10) {
-        const maxScroll = slider.scrollWidth - slider.offsetWidth;
-        slider.scrollTo({ left: maxScroll, behavior: 'smooth' });
-      } else {
-        const cardWidth = initialCards[0].offsetWidth + 16; // width + gap
-        slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-      }
-    });
-
-    // Drag to scroll
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    slider.addEventListener('mousedown', (e) => {
-      isDown = true;
-      slider.classList.add('active');
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener('mouseleave', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-    slider.addEventListener('mouseup', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-    slider.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 2;
-      slider.scrollLeft = scrollLeft - walk;
-    });
   </script>
 
 
@@ -2616,8 +2576,8 @@
 
 
   <!-- BOTON WHATSAPP -->
-  <a href="https://wa.me/5493513508205?text=Hola Ani, quiero reservar mi lugar en Sentir Desde Adentro" class="wa-float"
-    target="_blank">
+  <a href="https://wa.me/5493513508205?text=Hola+Ani%21+Vengo+desde+tu+web+y+quiero+anotarme+en+el+Programa+Sentir+desde+Adentro"
+    class="wa-float" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
       <path
         d="M20.52 3.48A11.82 11.82 0 0012.05 0C5.41 0 .04 5.37.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.9 11.9 0 0012.05 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.53-8.52z" />
