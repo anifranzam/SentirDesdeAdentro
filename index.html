@@ -991,17 +991,17 @@
     }
 
     .lightbox-content img {
-      width: 140%; /* Initial "Mega-Zoom" to focus on text */
+      width: 130%; /* Focus on the text area by over-zooming slightly on mobile */
       max-width: none;
       height: auto;
       object-fit: contain;
       box-shadow: 0 0 60px rgba(0,0,0,0.6);
       border-radius: 4px;
       cursor: default;
-      margin-left: -20%; /* Center the 140% width */
+      margin-left: -15%; /* Center the over-zoomed image */
     }
 
-    /* On Desktop, don't over-zoom */
+    /* On Desktop, keep image standard and no negative margins */
     @media (min-width: 900px) {
       .lightbox-content img {
         width: 100%;
@@ -1010,6 +1010,9 @@
       }
       .lightbox-content {
         padding: 2rem;
+      }
+      .testi-item img {
+        cursor: default !important; /* Disable zoom-in cursor on desktop */
       }
     }
 
@@ -1038,8 +1041,12 @@
     }
 
     .testi-item img {
-      cursor: zoom-in;
+      /* Only show zoom cursor on mobile */
+      cursor: default;
       transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    @media (max-width: 900px) {
+      .testi-item img { cursor: zoom-in; }
     }
 
     .testi-item img:hover {
@@ -2390,9 +2397,13 @@
       document.body.style.overflow = ''; // Restore scrolling
     }
 
-    // Attach click events to all testimonial images
+    // Attach click events only on mobile screens
     document.querySelectorAll('.testi-item img').forEach(img => {
-      img.addEventListener('click', () => openLightbox(img.src));
+      img.addEventListener('click', () => {
+        if (window.innerWidth < 900) {
+          openLightbox(img.src);
+        }
+      });
     });
 
     // Close on Escape key
