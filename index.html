@@ -962,6 +962,69 @@
       }
     }
 
+    /* ── LIGHTBOX ── */
+    #testiLightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 14, 12, 0.95);
+      z-index: 2000;
+      padding: 2rem;
+      cursor: zoom-out;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    #testiLightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-content img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      border-radius: 4px;
+      cursor: auto;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: -10px;
+      color: var(--dorado);
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
+    .testi-item img {
+      cursor: zoom-in;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .testi-item img:hover {
+      transform: translateY(-5px);
+      filter: brightness(1.1);
+    }
+
     /* ── QUOTE BOX ───────────────────────────────── */
     #ani p {
       font-size: 0.95rem;
@@ -2282,7 +2345,39 @@
     </div>
   </footer>
 
+  <!-- LIGHTBOX STRUCTURE -->
+  <div id="testiLightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightboxImg" src="" alt="Testimonio ampliado">
+    </div>
+  </div>
+
   <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('testiLightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Stop scrolling
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('testiLightbox');
+      lightbox.classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Attach click events to all testimonial images
+    document.querySelectorAll('.testi-item img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
     // ── NAV SCROLL ──────────────────────────────────
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
