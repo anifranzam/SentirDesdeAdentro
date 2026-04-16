@@ -991,14 +991,16 @@
     }
 
     .lightbox-content img {
-      width: 130%; /* Focus on the text area by over-zooming slightly on mobile */
+      width: 115%; /* Balanced zoom for legibility without over-scrolling */
       max-width: none;
       height: auto;
       object-fit: contain;
       box-shadow: 0 0 60px rgba(0,0,0,0.6);
       border-radius: 4px;
       cursor: default;
-      margin-left: -15%; /* Center the over-zoomed image */
+      margin-left: -7.5%; /* Center the 115% width */
+      margin-top: 80px; /* Safe space to prevent 'X' button from covering text */
+      margin-bottom: 60px;
     }
 
     /* On Desktop, keep image standard and no negative margins */
@@ -1017,15 +1019,15 @@
     }
 
     .lightbox-close {
-      position: fixed; /* Keep it visible while scrolling */
+      position: fixed;
       top: 20px;
       right: 20px;
       width: 44px;
       height: 44px;
       color: white;
       font-size: 1.5rem;
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: var(--bordo); /* Solid background to ensure visibility */
+      border: 1px solid var(--dorado);
       border-radius: 50%;
       cursor: pointer;
       z-index: 2001;
@@ -1033,6 +1035,7 @@
       align-items: center;
       justify-content: center;
       transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     }
 
     .lightbox-close:hover {
@@ -1041,12 +1044,12 @@
     }
 
     .testi-item img {
-      /* Only show zoom cursor on mobile */
+      /* Only show zoom cursor on mobile for images that ARE zoomable */
       cursor: default;
       transition: transform 0.3s ease, filter 0.3s ease;
     }
     @media (max-width: 900px) {
-      .testi-item img { cursor: zoom-in; }
+      .testi-item img:not(.no-zoom) { cursor: zoom-in; }
     }
 
     .testi-item img:hover {
@@ -2038,15 +2041,15 @@
         <img src="sergiogarzon_sin fecha.png" alt="Testimonio Sergio Garzón">
       </div>
       <div class="testi-item">
-        <img src="flavia garnica_sin fecha.jpg" alt="Testimonio Flavia Garnica">
+        <img src="flavia garnica_sin fecha.jpg" alt="Testimonio Flavia Garnica" class="no-zoom">
         <div class="testi-name-simple">Flavia Garnica</div>
       </div>
       <div class="testi-item">
-        <img src="Erika Baier_sin fecha.jpg" alt="Testimonio Erica Baier">
+        <img src="Erika Baier_sin fecha.jpg" alt="Testimonio Erica Baier" class="no-zoom">
         <div class="testi-name-simple">Erika Baier</div>
       </div>
       <div class="testi-item">
-        <img src="Romina_sin fecha.jpg" alt="Testimonio Romina">
+        <img src="Romina_sin fecha.jpg" alt="Testimonio Romina" class="no-zoom">
         <div class="testi-name-simple">Romina</div>
       </div>
       <div class="testi-item">
@@ -2397,8 +2400,8 @@
       document.body.style.overflow = ''; // Restore scrolling
     }
 
-    // Attach click events only on mobile screens
-    document.querySelectorAll('.testi-item img').forEach(img => {
+    // Attach click events only on mobile screens AND only for zoomable images
+    document.querySelectorAll('.testi-item img:not(.no-zoom)').forEach(img => {
       img.addEventListener('click', () => {
         if (window.innerWidth < 900) {
           openLightbox(img.src);
