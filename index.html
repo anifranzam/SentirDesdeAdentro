@@ -967,13 +967,14 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(18, 14, 12, 0.95);
+      background: rgba(12, 10, 9, 0.98);
       z-index: 2000;
-      padding: 2rem;
+      padding: 1rem;
       cursor: zoom-out;
       justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(8px);
+      align-items: flex-start; /* Start from top to allow scrolling */
+      backdrop-filter: blur(12px);
+      overflow-y: auto; /* Essential for tall screenshots */
     }
 
     #testiLightbox.active {
@@ -982,37 +983,46 @@
 
     .lightbox-content {
       position: relative;
-      max-width: 100%;
-      max-height: 100%;
+      width: 100%;
+      max-width: 900px;
+      margin: auto; /* Centers shorter images, allows top alignment for tall ones */
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
     }
 
     .lightbox-content img {
-      max-width: 95vw;
-      max-height: 90vh;
+      width: 100%;
+      height: auto;
+      max-height: none; /* Don't shrink vertically */
       object-fit: contain;
-      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      box-shadow: 0 0 60px rgba(0,0,0,0.6);
       border-radius: 4px;
-      cursor: auto;
+      cursor: default;
     }
 
     .lightbox-close {
-      position: absolute;
-      top: -40px;
-      right: -10px;
-      color: var(--dorado);
-      font-size: 2rem;
-      background: none;
-      border: none;
+      position: fixed; /* Keep it visible while scrolling */
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      color: white;
+      font-size: 1.5rem;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
       cursor: pointer;
-      opacity: 0.8;
-      transition: opacity 0.3s;
+      z-index: 2001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
     }
 
     .lightbox-close:hover {
-      opacity: 1;
+      background: var(--dorado);
+      color: var(--carbon);
     }
 
     .testi-item img {
