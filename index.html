@@ -969,12 +969,12 @@
       inset: 0;
       background: rgba(12, 10, 9, 0.98);
       z-index: 2000;
-      padding: 1rem;
+      padding: 0; /* No padding to maximize space */
       cursor: zoom-out;
       justify-content: center;
-      align-items: flex-start; /* Start from top to allow scrolling */
+      align-items: flex-start;
       backdrop-filter: blur(12px);
-      overflow-y: auto; /* Essential for tall screenshots */
+      overflow: auto; /* Allow scrolling in both directions */
     }
 
     #testiLightbox.active {
@@ -984,21 +984,33 @@
     .lightbox-content {
       position: relative;
       width: 100%;
-      max-width: 900px;
-      margin: auto; /* Centers shorter images, allows top alignment for tall ones */
+      min-height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .lightbox-content img {
-      width: 100%;
+      width: 140%; /* Initial "Mega-Zoom" to focus on text */
+      max-width: none;
       height: auto;
-      max-height: none; /* Don't shrink vertically */
       object-fit: contain;
       box-shadow: 0 0 60px rgba(0,0,0,0.6);
       border-radius: 4px;
       cursor: default;
+      margin-left: -20%; /* Center the 140% width */
+    }
+
+    /* On Desktop, don't over-zoom */
+    @media (min-width: 900px) {
+      .lightbox-content img {
+        width: 100%;
+        max-width: 850px;
+        margin-left: 0;
+      }
+      .lightbox-content {
+        padding: 2rem;
+      }
     }
 
     .lightbox-close {
