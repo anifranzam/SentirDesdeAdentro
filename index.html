@@ -12,9 +12,10 @@
   <meta property="og:title" content="Sentir desde Adentro · Ani Franza M.">
   <meta property="og:description"
     content="Descubrí el programa de 4 encuentros semanales: Aprende A Escucharte. No venís a aprender técnicas, venís a recordar algo que ya sabés en el cuerpo.">
-  <meta property="og:image" content="hero_abstract.png">
+  <meta property="og:image" content="hero_abstract_updated.png">
   <meta property="og:type" content="website">
   <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preload" href="hero_abstract_updated.png" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap"
@@ -451,6 +452,7 @@
     /* ── SECTION SHARED ──────────────────────────── */
     section {
       position: relative;
+      scroll-margin-top: 80px;
     }
 
     .section-label {
@@ -915,18 +917,17 @@
     }
 
     .testi-feed {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5rem;
-      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
+      align-items: start;
     }
 
     .testi-item {
       width: 100%;
-      max-width: 800px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -957,7 +958,8 @@
 
     @media (max-width: 768px) {
       .testi-feed {
-        gap: 4rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
 
       .testi-header h2 {
@@ -1287,7 +1289,7 @@
 
     .pricing-cards {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 460px));
+      grid-template-columns: minmax(0, 520px);
       gap: 1.5rem;
       justify-content: center;
       margin-bottom: 4rem;
@@ -1537,7 +1539,7 @@
     }
 
     .faq-item.open .faq-a {
-      max-height: 300px;
+      max-height: 600px;
       padding-bottom: 1.8rem;
     }
 
@@ -1765,10 +1767,140 @@
       opacity: 0.04;
     }
 
+    /* ── HAMBURGER BUTTON ───────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 26px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--dorado);
+      border-radius: 2px;
+      transition: transform 0.35s ease, opacity 0.25s ease;
+      transform-origin: left center;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(1px, -2px);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(1px, 2px);
+    }
+
+    /* ── MOBILE NAV OVERLAY ──────────────────────── */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 20, 16, 0.98);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav ul {
+      list-style: none;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    .mobile-nav-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--crema);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: block;
+      transition: color 0.3s;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: color 0.3s, opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .mobile-nav.open .mobile-nav-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-nav.open li:nth-child(1) .mobile-nav-link {
+      transition-delay: 0.05s;
+    }
+
+    .mobile-nav.open li:nth-child(2) .mobile-nav-link {
+      transition-delay: 0.10s;
+    }
+
+    .mobile-nav.open li:nth-child(3) .mobile-nav-link {
+      transition-delay: 0.15s;
+    }
+
+    .mobile-nav.open li:nth-child(4) .mobile-nav-link {
+      transition-delay: 0.20s;
+    }
+
+    .mobile-nav.open li:nth-child(5) .mobile-nav-link {
+      transition-delay: 0.25s;
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--dorado);
+    }
+
+    .mobile-nav-cta {
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.9rem !important;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--arena) !important;
+      background: var(--bordo);
+      padding: 1rem 2.5rem;
+      border-radius: 2px;
+      transition: background 0.3s, opacity 0.4s ease, transform 0.4s ease !important;
+    }
+
+    .mobile-nav-cta:hover {
+      background: var(--bordo2);
+    }
+
     /* ── MOBILE ──────────────────────────────────── */
     @media (max-width: 900px) {
       nav {
         padding: 1rem 1.5rem;
+      }
+
+      .hamburger {
+        display: flex;
       }
 
       .nav-links {
@@ -1785,6 +1917,10 @@
 
       .hero-right {
         height: 50vh;
+      }
+
+      .hero-photo-img {
+        object-position: center center;
       }
 
       #sobre,
@@ -1857,15 +1993,31 @@
       <li><a href="#para-quien">¿Para quién?</a></li>
       <li><a href="#ani">Quién soy</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
-      <li><a href="#inscripcion" class="nav-cta">Quiero anotarme</a></li>
+      <li><a href="#inscripcion" class="nav-cta">Reservar mi lugar</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Menú mobile">
+    <ul>
+      <li><a href="#programa" class="mobile-nav-link">El Programa</a></li>
+      <li><a href="#para-quien" class="mobile-nav-link">¿Para quién?</a></li>
+      <li><a href="#ani" class="mobile-nav-link">Quién soy</a></li>
+      <li><a href="#testimonios" class="mobile-nav-link">Testimonios</a></li>
+      <li><a href="#inscripcion" class="mobile-nav-link mobile-nav-cta">Reservar mi lugar</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow">Programa de 4 encuentros semanales · Comienza Lunes 4 de Mayo 19hs (ARG) · Inversión:
-        $45.000 / USD 45
+      <div class="hero-eyebrow">Programa de 4 encuentros semanales · Grupos Reducidos · Cupos Limitados · Inversión:
+        USD 45
       </div>
       <h1 class="hero-title">Sentir desde<br>Adentro</h1>
       <div class="hero-title-sub serif-italic">Aprende A Escucharte</div>
@@ -1873,12 +2025,15 @@
         No venís a aprender técnicas. Venís a recordar algo que ya sabés
         en el cuerpo pero que el ruido del mundo te hizo olvidar:
         que tus emociones no son el problema. Son la información más
-        honesta que tenés.
+        honesta que tenés. Al terminar el programa, vas a saber escucharlas.
       </p>
       <div class="hero-cta-group">
-        <a href="#inscripcion" class="btn-primary">Quiero participar</a>
+        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Quiero+reservar+mi+lugar+en+el+Programa+Sentir+desde+Adentro.+%C2%BFMe+pas%C3%A1s+los+datos+para+hacer+el+pago%3F"
+          class="btn-primary" target="_blank" rel="noopener noreferrer">Reservar mi lugar</a>
         <a href="#programa" class="btn-ghost">Ver el programa</a>
       </div>
+      <p style="font-size: 0.78rem; color: var(--gris); margin-top: 1rem; letter-spacing: 0.05em;">El taller arranca al
+        completarse el cupo mínimo. Te avisaremos cuándo</p>
     </div>
 
     <div class="hero-right">
@@ -1934,6 +2089,76 @@
         <span class="tag">4 encuentros</span>
         <span class="tag">Práctico</span>
         <span class="tag">100% Online</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANI BIO -->
+  <section id="ani">
+    <div class="ani-photo-wrap reveal">
+      <div class="ani-photo-frame">
+        <img src="ani_profile_updated2.png" alt="Ani Franza M." style="object-position: center;">
+      </div>
+    </div>
+
+    <div class="ani-content reveal">
+      <div class="section-label">Quién está detrás</div>
+      <h2 style="font-size: 1.8rem; color: var(--carbon); margin-bottom: 1rem;">Ani Franza M.</h2>
+
+      <p><strong>Soy Ani. Y yo también fui la diferente.</strong></p>
+
+      <p>
+        Durante años busqué comprender lo que me pasaba internamente en contextos que priorizaban lo material
+        por sobre lo integral. Ese recorrido me llevó a descubrir que las emociones no eran el problema,
+        sino una puerta de entrada para revisar creencias, paradigmas, historia personal y la relación entre mente,
+        cuerpo y dimensión interna álmica / espiritual.
+      </p>
+
+      <p>
+        Hoy acompaño procesos desde una mirada integradora, donde lo emocional, lo mental, lo físico y lo espiritual
+        se comprenden como partes de un mismo proceso, permitiendo que la comprensión interna se traduzca en cambios
+        concretos.
+      </p>
+
+      <div class="quote-box">
+        <blockquote>"Soy sólo un alma humana, tocando a otra alma humana."</blockquote>
+      </div>
+
+      <p>
+        Este enfoque se nutre de formación en Coaching Ontológico Profesional, Inteligencia Emocional y
+        Biodescodificación emocional,
+        junto con estudios en Administración de Empresas de Logística y un recorrido personal que integra psicología,
+        constelaciones familiares, meditación Vipassana y otras prácticas de autoconocimiento.
+      </p>
+
+      <p><strong>Cuando algo se ordena por dentro, también cambia y se re-ordena la forma de vivirlo por fuera.</strong>
+      </p>
+
+      <div class="logos-formacion reveal"
+        style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(122, 106, 96, 0.2);">
+        <p
+          style="font-size: 0.8rem; color: var(--gris); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
+          Formación y Avales</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; align-items: start;">
+          <div style="text-align: center; max-width: 130px;">
+            <img src="LOGO_ECOCOACHING.png" alt="Eco Coaching"
+              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
+            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Coaching Ontológico
+              Profesional y<br>Diplomatura en Inteligencia Emocional</p>
+          </div>
+          <div style="text-align: center; max-width: 130px;">
+            <img src="logo_CuerpoMenteAlma.png" alt="Grupo Cuerpo Mente Alma"
+              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
+            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Diplomado
+              Internacional en Medicina<br>Cuerpo Mente Alma y Biodescodificación</p>
+          </div>
+          <div style="text-align: center; max-width: 130px;">
+            <img src="logo_ColegioUniversitarioIES.jpg" alt="IES Siglo 21"
+              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
+            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Administración de
+              Empresas<br>de Logística</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2073,90 +2298,20 @@
     </div>
   </section>
 
-  <!-- ANI BIO -->
-  <section id="ani">
-    <div class="ani-photo-wrap reveal">
-      <div class="ani-photo-frame">
-        <img src="ani_profile_updated2.png" alt="Ani Franza M." style="object-position: center;">
-      </div>
-    </div>
-
-    <div class="ani-content reveal">
-      <div class="section-label">Quién está detrás</div>
-      <h2 style="font-size: 1.8rem; color: var(--carbon); margin-bottom: 1rem;">Ani Franza M.</h2>
-
-      <p><strong>Soy Ani. Y yo también fui la diferente.</strong></p>
-
-      <p>
-        Durante años busqué comprender lo que me pasaba internamente en contextos que priorizaban lo material
-        por sobre lo integral. Ese recorrido me llevó a descubrir que las emociones no eran el problema,
-        sino una puerta de entrada para revisar creencias, paradigmas, historia personal y la relación entre mente,
-        cuerpo y dimensión interna álmica / espiritual.
-      </p>
-
-      <p>
-        Hoy acompaño procesos desde una mirada integradora, donde lo emocional, lo mental, lo físico y lo espiritual
-        se comprenden como partes de un mismo proceso, permitiendo que la comprensión interna se traduzca en cambios
-        concretos.
-      </p>
-
-      <div class="quote-box">
-        <blockquote>"Soy sólo un alma humana, tocando a otra alma humana."</blockquote>
-      </div>
-
-      <p>
-        Este enfoque se nutre de formación en Coaching Ontológico Profesional, Inteligencia Emocional y
-        Biodescodificación emocional,
-        junto con estudios en Administración de Empresas de Logística y un recorrido personal que integra psicología,
-        constelaciones familiares, meditación Vipassana y otras prácticas de autoconocimiento.
-      </p>
-
-      <p><strong>Cuando algo se ordena por dentro, también cambia y se re-ordena la forma de vivirlo por fuera.</strong>
-      </p>
-
-      <div class="logos-formacion reveal"
-        style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(122, 106, 96, 0.2);">
-        <p
-          style="font-size: 0.8rem; color: var(--gris); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
-          Formación y Avales</p>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; align-items: start;">
-          <div style="text-align: center; max-width: 130px;">
-            <img src="LOGO_ECOCOACHING.png" alt="Eco Coaching"
-              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Coaching Ontológico
-              Profesional y<br>Diplomatura en Inteligencia Emocional</p>
-          </div>
-          <div style="text-align: center; max-width: 130px;">
-            <img src="logo_CuerpoMenteAlma.png" alt="Grupo Cuerpo Mente Alma"
-              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Diplomado
-              Internacional en Medicina<br>Cuerpo Mente Alma y Biodescodificación</p>
-          </div>
-          <div style="text-align: center; max-width: 130px;">
-            <img src="logo_ColegioUniversitarioIES.jpg" alt="IES Siglo 21"
-              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Administración de
-              Empresas<br>de Logística</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- INSCRIPCION -->
   <section id="inscripcion">
-    <div class="section-label">Sumate al programa</div>
-    <h2>¿Estás lista/o para<br><em>sentir desde adentro</em>?</h2>
+    <div class="section-label">Preventa · Cupos limitados</div>
+    <h2>Reservá tu lugar<br><em>antes de que se llene.</em></h2>
     <p class="desc">
-      Cuatro encuentros de 60 minutos. Modalidad 100% online.
-      Grupos pequeños para que la experiencia sea real.
+      El grupo arranca cuando se completa el cupo. Tu pago reserva tu lugar — te confirmamos la fecha cuando estemos listos para empezar.
     </p>
 
     <div class="pricing-cards">
       <!-- OPCIÓN GRUPAL (PROTAGONISTA) -->
       <div class="price-card reveal"
         style="border: 2px solid var(--dorado); background: rgba(58, 31, 15, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.4);">
-        <div class="badge-lanzamiento" style="background: var(--dorado); color: var(--carbon); font-weight: 700;">⭐
+        <div class="badge-lanzamiento"
+          style="background: var(--dorado); color: var(--carbon); font-weight: 700; display: none;">⭐
           RECOMENDADO · LANZAMIENTO</div>
         <div class="price-label">Programa de 4 encuentros semanales</div>
         <div class="price-name" style="color: var(--dorado2); font-size: 1.8rem; margin-bottom: 0.5rem;">Programa
@@ -2167,13 +2322,10 @@
           <span class="label" style="font-size: 0.8rem;">USD · USDT · USDC</span>
           <span class="value" style="font-size: 2.2rem; color: var(--dorado);">45</span>
         </div>
-        <div class="price-row">
-          <span class="label" style="font-size: 0.8rem;">Pesos Arg.</span>
-          <span class="value" style="font-size: 2.2rem; color: var(--dorado);">$45.000</span>
-        </div>
 
         <div class="price-date-box" style="background: rgba(191,140,44,0.05);">
-          <div class="date-info" style="font-size: 1rem;"> 🗓️ Comienzo Lunes 4 de Mayo 19hs (ARG) (Total 4 Lunes)
+          <div class="date-info" style="font-size: 1rem;"> 🗓️ La fecha se confirma al completarse el grupo · Cupos
+            limitados
           </div>
         </div>
 
@@ -2183,65 +2335,21 @@
           <li>Acceso a comunidad de práctica</li>
           <li>Soporte de Ani durante el proceso</li>
         </ul>
-        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%2C+quiero+anotarme+ahora+en+el+Programa+Grupal+Sentir+Desde+Adentro"
+        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Quiero+reservar+mi+lugar+en+el+Programa+Sentir+desde+Adentro.+%C2%BFMe+pas%C3%A1s+los+datos+para+hacer+el+pago%3F"
           class="price-btn"
           style="background: var(--dorado); color: var(--carbon); font-weight: 700; box-shadow: 0 4px 15px rgba(191,140,44,0.3);"
-          target="_blank">Quiero anotarme ahora</a>
+          target="_blank" rel="noopener noreferrer">Reservar mi lugar</a>
       </div>
 
-      <!-- OPCIÓN VIP (ANCLAJE / SECUNDARIA) -->
-      <div class="price-card featured reveal"
-        style="opacity: 0.8; border: 1px solid rgba(122, 106, 96, 0.3); background: transparent;">
-        <div class="badge-lanzamiento"
-          style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--gris);">Atención
-          1:1</div>
-        <div class="price-label">Modalidad Individual</div>
-        <div class="price-name" style="color: var(--gris); font-size: 1.6rem; margin-bottom: 0.5rem;">VIP 1:1</div>
-        <div class="price-desc">El programa adaptado 100% a tu tiempo, ritmo y proceso personal.</div>
-
-        <div class="price-row">
-          <span class="label" style="color: var(--gris); font-size: 0.8rem;">Valor Diferencial</span>
-        </div>
-        <div class="price-row" style="margin-bottom: 1rem;">
-          <span class="value" style="font-size: 1.1rem; opacity: 0.6; color: var(--gris);">Inversión a medida</span>
-        </div>
-
-        <div class="price-date-box"
-          style="border-style: dashed; border-color: rgba(122, 106, 96, 0.2); background: none;">
-          <div class="date-info" style="color: var(--gris); font-size: 0.9rem;">Agenda a coordinar</div>
-        </div>
-
-        <ul class="price-includes" style="color: var(--gris); opacity: 0.7;">
-          <li>Encuentros personalizados</li>
-          <li>Seguimiento entre sesiones</li>
-          <li>Material a medida</li>
-        </ul>
-        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%2C+quiero+consultar+por+el+formato+VIP+1%3A1"
-          class="price-btn"
-          style="background: transparent; border: 1px solid var(--gris); color: var(--gris); padding: 0.8rem;"
-          target="_blank">Consultar por VIP</a>
-      </div>
     </div>
 
-    <div class="promesa-valor reveal"
-      style="max-width: 800px; margin: 4rem auto 2rem; padding: 2.5rem 2rem; background: rgba(58, 31, 15, 0.4); border: 1px solid var(--dorado); border-radius: 4px; text-align: left; position: relative;">
-      <div
-        style="position: absolute; top: -12px; left: 30px; background: var(--carbon); padding: 0 10px; color: var(--dorado); font-size: 1.2rem;">
-        ✦</div>
-      <h3
-        style="color: var(--dorado); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 400;">
-        Mi Compromiso Intransferible</h3>
-      <p style="font-size: 1.05rem; color: var(--arena); font-style: italic; margin-bottom: 0; line-height: 1.8;">"No
-        puedo prometerte magia ni atajos, porque este es un proceso real. Pero sí te prometo esto: un espacio 100%
-        seguro, confidencial y libre de juicios, sostenido con honestidad, presencia absoluta y herramientas probadas.
-        Mi mayor inversión en vos es el tiempo, la energía y el compromiso de acompañarte a reconectar con tu propia
-        brújula."</p>
-    </div>
-
-    <p class="inscripcion-note">
-      Si algo de lo que leíste resonó pero no sabés si es para vos,
-      escribime. Una conversación de 15 minutos es suficiente para saberlo.
+    <p class="inscripcion-note" style="margin-top: 1.5rem;">
+      ¿Preferís un acompañamiento 1:1 personalizado?
+      <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Me+interesa+el+acompa%C3%B1amiento+1%3A1+personalizado.+%C2%BFMe+cont%C3%A1s+m%C3%A1s%3F"
+        target="_blank" rel="noopener noreferrer"
+        style="color: var(--dorado); text-decoration: none; border-bottom: 1px solid rgba(191,140,44,0.4);">Escribime por WhatsApp</a>
     </p>
+
   </section>
 
   <!-- FAQ -->
@@ -2273,10 +2381,8 @@
           ¿Cuándo son los encuentros?
           <div class="faq-icon">+</div>
         </button>
-        <div class="faq-a">Los encuentros comienzan el <strong>Lunes 4 de Mayo a las 19hs (ARG)</strong>, con los 3
-          lunes
-          siguientes.
-          Un encuentro por semana, durante 4 semanas.
+        <div class="faq-a">Los encuentros son semanales, una vez por semana durante 4 semanas. El día, horario y fecha
+          de inicio se confirman al completarse el grupo.
         </div>
       </div>
       <!-- texto oculto -->
@@ -2289,7 +2395,7 @@
           el momento. La profundidad del trabajo emocional surge de la participación activa, la vivencia directa y las
           dinámicas grupales que forman parte del espacio.
           <br>
-          Si esto es algo importante para vos, podés escribirme y vemos tu caso puntual.
+          Sólo para situaciones excepcionales, cada clase queda grabada con acceso de 48 horas.
         </div>
       </div>
 
@@ -2337,16 +2443,16 @@
   <!-- CONTACTO FINAL -->
   <section id="contacto">
     <div class="contact-glow"></div>
-    <h2 class="reveal">¿Nos conectamos<br>y <em>empezamos</em>?</h2>
+    <h2 class="reveal">¿Algo<br><em>resonó</em>?</h2>
     <p class="reveal">
-      Escribime.
-      Si algo de acá resonó — eso ya es una señal.
+      No necesitás tener todo claro para escribirme.<br>
+      Si algo de lo que leíste te movió por dentro — eso ya es suficiente.
     </p>
 
     <div class="contact-links reveal">
-      <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Vengo+desde+tu+web+y+quiero+anotarme+en+el+Programa+Sentir+desde+Adentro"
-        class="contact-link wa" target="_blank">
-        💬 Quiero anotarme por WhatsApp
+      <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Le%C3%AD+tu+p%C3%A1gina+y+algo+reson%C3%B3.+%C2%BFPodemos+hablar+antes+de+que+decida%3F"
+        class="contact-link wa" target="_blank" rel="noopener noreferrer">
+        💬 Escribime por WhatsApp
       </a>
     </div>
   </section>
@@ -2365,27 +2471,27 @@
       </div>
     </div>
     <div class="footer-socials">
-      <a href="https://api.whatsapp.com/send/?phone=5493513508205" class="wa" target="_blank" title="WhatsApp"
+      <a href="https://api.whatsapp.com/send/?phone=5493513508205" class="wa" target="_blank" rel="noopener noreferrer" title="WhatsApp"
         data-tooltip="WhatsApp">
         <svg viewBox="0 0 24 24">
           <path
             d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.516.893 3.003 1.337 4.769 1.338 5.487 0 9.953-4.466 9.956-9.956.002-2.661-1.033-5.161-2.91-7.04s-4.379-2.912-7.042-2.913c-5.489 0-9.954 4.465-9.958 9.956-.001 1.831.501 3.613 1.45 5.174l-1.092 3.993 4.1-.752zm11.454-7.466c-.309-.155-1.833-.905-2.113-1.006-.28-.1-.485-.155-.688.155-.205.31-.79.991-.97 1.192-.18.2-.361.226-.67.071-.31-.155-1.306-.481-2.486-1.534-.919-.819-1.54-1.832-1.72-2.143-.18-.309-.018-.477.137-.63.139-.138.31-.36.465-.541.155-.181.205-.31.309-.516.105-.206.052-.387-.025-.541-.077-.155-.688-1.653-.943-2.268-.248-.598-.501-.517-.688-.527l-.587-.01c-.205 0-.541.077-.825.387s-1.084 1.057-1.084 2.58c0 1.522 1.109 2.993 1.264 3.2 1.55 2.043 3.324 3.12 5.068 3.86 1.745.74 2.872.936 3.911.78l1.706-.25c.31-.045.825-.335 1.056-.993.23-.655.23-1.21.161-1.328-.1-.137-.417-.301-.842-.491z" />
         </svg>
       </a>
-      <a href="https://www.instagram.com/anifranzam" class="ig" target="_blank" title="Instagram"
+      <a href="https://www.instagram.com/anifranzam" class="ig" target="_blank" rel="noopener noreferrer" title="Instagram"
         data-tooltip="Instagram">
         <svg viewBox="0 0 24 24">
           <path
             d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.475 1.382.897.422.422.68.822.897 1.382.164.422.359 1.057.412 2.227.059 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.475.96-.897 1.382-.422.422-.822.68-1.382.897-.422.164-1.057.359-2.227.412-1.266.059-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.475-1.382-.897-.422-.422-.68-.822-.897-1.382-.164-.422-.359-1.057-.412-2.227-.059-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.475-.96.897-1.382.422-.422.822-.68 1.382-.897.422-.164 1.057-.359 2.227-.412 1.266-.059 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.057-2.15.26-2.914.557-.79.307-1.459.718-2.124 1.383-.665.665-1.076 1.334-1.383 2.124-.297.764-.501 1.637-.557 2.914-.059 1.28-.073 1.688-.073 4.947s.014 3.667.072 4.947c.057 1.277.26 2.15.557 2.914.307.79.718 1.459 1.383 2.124.665.665 1.334 1.076 2.124 1.383.764.297 1.637.501 2.914.557 1.28.059 1.688.073 4.947.073s3.667-.014 4.947-.072c1.277-.057 2.15-.26 2.914-.557.79-.307 1.459-.718 2.124-1.383.665-.665 1.076-1.334 1.383-2.124.297-.764.501-1.637.557-2.914.059-1.28.073-1.688.073-4.947s-.014-3.667-.072-4.947c-.057-1.277-.26-2.15-.557-2.914-.307-.79-.718-1.459-1.383-2.124-.665-.665-1.334-1.076-2.124-1.383-.764-.297-1.637-.501-2.914-.557-1.28-.059-1.688-.073-4.947-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44-1.44-.645-1.44-1.44.645-1.44 1.441-1.44z" />
         </svg>
       </a>
-      <a href="https://www.youtube.com/@anifranzam" class="yt" target="_blank" title="YouTube" data-tooltip="YouTube">
+      <a href="https://www.youtube.com/@anifranzam" class="yt" target="_blank" rel="noopener noreferrer" title="YouTube" data-tooltip="YouTube">
         <svg viewBox="0 0 24 24">
           <path
             d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z" />
         </svg>
       </a>
-      <a href="https://linktr.ee/anifranzam" class="lt" target="_blank" title="Linktree" data-tooltip="Linktree">
+      <a href="https://linktr.ee/anifranzam" class="lt" target="_blank" rel="noopener noreferrer" title="Linktree" data-tooltip="Linktree">
         <svg viewBox="0 0 24 24">
           <path
             d="M13.511 19.071l4.032-4.103h-2.502s.534-4.522.617-5.023c.083-.5.183-1.017.183-1.017l4.004-4.004-.701-.701-4.12 4.12s-.217 2.37-.3 3.237c-.084.868-.134 1.418-.134 1.418H12.72l.017-10.75h-.934l-.017 10.75H9.923s-.05-1.05-.133-1.918c-.083-.867-.3-3.237-.3-3.237L5.37 3.523l-.701.701 4.004 4.004s.1 1.017.183 1.017c.083.5.617 5.023.617 5.023H6.971l4.032 4.103V22.5h2.508v-3.429z" />
@@ -2507,243 +2613,42 @@
       });
     });
 
-  </script>
+    // ── HAMBURGER MENU ──────────────────────────────
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
 
-
-  <!-- MENU FLOTANTE MOBILE -->
-
-  <div class="menu-float" onclick="toggleMenu()">☰</div>
-
-  <div id="menuAni" class="menu-ani">
-
-    <a href="#programa">El Programa</a>
-
-    <a href="#para-quien">¿Para quién?</a>
-
-    <a href="#ani">Quién soy</a>
-
-    <a href="#testimonios">Testimonios</a>
-
-    <a href="#inscripcion" class="menu-cta">Quiero anotarme</a>
-
-  </div>
-
-
-  <style>
-    /* botón circular */
-
-    .menu-float {
-
-      position: fixed;
-
-      top: 22px;
-      right: 20px;
-
-      width: 54px;
-      height: 54px;
-
-      border-radius: 50%;
-
-      background: #2d2d2d;
-
-      color: white;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 26px;
-
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-
-      z-index: 999;
-
-      cursor: pointer;
-
-      transition: 0.3s;
-
+    function openMobileNav() {
+      hamburgerBtn.classList.add('open');
+      mobileNav.classList.add('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     }
 
-
-    /* efecto suave */
-
-    .menu-float:hover {
-
-      transform: scale(1.08);
-
+    function closeMobileNav() {
+      hamburgerBtn.classList.remove('open');
+      mobileNav.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     }
 
-
-    /* contenedor menú */
-
-    .menu-ani {
-
-      position: fixed;
-
-      top: 90px;
-      right: 20px;
-
-      background: white;
-
-      padding: 16px;
-
-      border-radius: 16px;
-
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-
-      display: none;
-
-      flex-direction: column;
-
-      gap: 10px;
-
-      z-index: 999;
-
-      min-width: 170px;
-
-      font-family: inherit;
-
-    }
-
-
-    /* links */
-
-    .menu-ani a {
-
-      text-decoration: none;
-
-      color: #444;
-
-      font-size: 14px;
-
-      padding: 6px 4px;
-
-      position: relative;
-
-      transition: 0.25s;
-
-    }
-
-
-    /* línea bordó sutil */
-
-    .menu-ani a::after {
-
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-
-      bottom: -3px;
-
-      width: 0;
-
-      height: 2px;
-
-      background: #7a3e3e;
-
-      transition: 0.25s;
-
-    }
-
-
-    /* aparece línea al pasar o tocar */
-
-    .menu-ani a:hover::after {
-
-      width: 100%;
-
-    }
-
-
-    /* botón destacado */
-
-    .menu-cta {
-
-      margin-top: 6px;
-
-      padding: 8px 10px;
-
-      border-radius: 8px;
-
-      background: #7a3e3e;
-
-      color: white !important;
-
-      text-align: center;
-
-    }
-
-
-    /* hover botón */
-
-    .menu-cta:hover {
-
-      background: #5e2f2f;
-
-    }
-  </style>
-
-
-
-  <script>
-
-    /* abrir cerrar menú */
-
-    function toggleMenu() {
-
-      var menu = document.getElementById("menuAni");
-
-      menu.style.display =
-        menu.style.display === "flex" ? "none" : "flex";
-
-    }
-
-
-    /* cerrar menú al hacer click */
-
-    document.querySelectorAll("#menuAni a")
-
-      .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-          document.getElementById("menuAni").style.display = "none";
-
-        });
-
-      });
-
-
-    /* scroll suave */
-
-    document.querySelectorAll('a[href^="#"]')
-
-      .forEach(anchor => {
-
-        anchor.addEventListener("click", function (e) {
-
-          e.preventDefault();
-
-          document.querySelector(this.getAttribute("href"))
-
-            .scrollIntoView({
-
-              behavior: "smooth"
-
-            });
-
-        });
-
-      });
+    hamburgerBtn.addEventListener('click', () => {
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileNav();
+    });
 
   </script>
 
 
   <!-- BOTON WHATSAPP -->
-  <a href="https://wa.me/5493513508205?text=Hola+Ani%21+Vengo+desde+tu+web+y+quiero+anotarme+en+el+Programa+Sentir+desde+Adentro"
-    class="wa-float" target="_blank">
+  <a href="https://wa.me/5493513508205?text=Hola+Ani%21+Vengo+desde+tu+p%C3%A1gina+web."
+    class="wa-float" target="_blank" rel="noopener noreferrer">
     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
       <path
         d="M20.52 3.48A11.82 11.82 0 0012.05 0C5.41 0 .04 5.37.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.9 11.9 0 0012.05 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.53-8.52z" />
