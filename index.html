@@ -1,2683 +1,330 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sentir desde Adentro · Ani Franza M.</title>
-  <meta name="description"
-    content="Aprende A Escucharte. Programa de 4 encuentros semanales donde vas a recorrer el camino de regreso: de las emociones como problema, a las emociones como brújula.">
-  <meta name="keywords"
-    content="Coaching, Emociones, Aprende A Escucharte, Ani Franza M., Desarrollo Personal, Crecimiento, Gestalt, Constelaciones">
-  <meta property="og:title" content="Sentir desde Adentro · Ani Franza M.">
-  <meta property="og:description"
-    content="Descubrí el programa de 4 encuentros semanales: Aprende A Escucharte. No venís a aprender técnicas, venís a recordar algo que ya sabés en el cuerpo.">
-  <meta property="og:image" content="hero_abstract_updated.png">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="preload" href="hero_abstract_updated.png" as="image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    /* ── RESET & BASE ─────────────────────────────── */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bordo: #5C1A28;
-      --bordo2: #7A2338;
-      --terra: #9E4A2E;
-      --dorado: #BF8C2C;
-      --dorado2: #D4A84B;
-      --arena: #E8D4A8;
-      --crema: #FAF5EC;
-      --carbon: #1A1410;
-      --cafe: #3A1F0F;
-      --gris: #7A6A60;
-      --salvia: #6B8F6B;
-      --rosa: #B87070;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Jost', sans-serif;
-      background: var(--carbon);
-      color: var(--arena);
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
-
-    /* ── NOISE TEXTURE OVERLAY ───────────────────── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.35;
-    }
-
-    /* ── BADGE LANZAMIENTO ───────────────────────── */
-    .badge-lanzamiento {
-      display: inline-block;
-      padding: 0.4rem 0.8rem;
-      background: rgba(191, 140, 44, 0.15);
-      border: 1px solid var(--dorado);
-      color: var(--dorado2);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      border-radius: 2px;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-
-    .serif-italic {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-    }
-
-    /* ── ANIMATIONS ──────────────────────────────── */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(32px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes drawLine {
-      from {
-        transform: scaleX(0);
-      }
-
-      to {
-        transform: scaleX(1);
-      }
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 0.6;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes floatY {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── NAV ─────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: linear-gradient(to bottom, rgba(26, 20, 16, 0.95), transparent);
-      transition: background 0.4s;
-    }
-
-    nav.scrolled {
-      background: rgba(26, 20, 16, 0.97);
-      border-bottom: 1px solid rgba(191, 140, 44, 0.15);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--dorado);
-      letter-spacing: 0.03em;
-      text-decoration: none;
-    }
-
-    .nav-logo span {
-      color: var(--arena);
-      font-weight: 300;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--arena);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      transition: opacity 0.3s, color 0.3s;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: var(--dorado);
-    }
-
-    .nav-cta {
-      background: var(--bordo);
-      color: var(--arena) !important;
-      opacity: 1 !important;
-      padding: 0.5rem 1.4rem;
-      border-radius: 2px;
-      transition: background 0.3s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--bordo2) !important;
-    }
-
-    /* ── HERO ────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 8rem 4rem 6rem 6rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      margin-bottom: 1.5rem;
-      animation: fadeIn 1s ease both;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--dorado);
-      opacity: 0.6;
-    }
-
-    .hero-title {
-      font-size: clamp(3.5rem, 6vw, 6rem);
-      color: var(--crema);
-      animation: fadeUp 1s ease 0.2s both;
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-title-sub {
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      color: var(--dorado);
-      font-style: italic;
-      font-weight: 300;
-      animation: fadeUp 1s ease 0.35s both;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--arena);
-      opacity: 0.85;
-      max-width: 480px;
-      animation: fadeUp 1s ease 0.5s both;
-      line-height: 1.8;
-      margin-bottom: 3rem;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-      animation: fadeUp 1s ease 0.65s both;
-    }
-
-    .btn-primary {
-      background: var(--bordo);
-      color: var(--arena);
-      padding: 1rem 2.2rem;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      display: inline-block;
-    }
-
-    .btn-primary:hover {
-      background: var(--bordo2);
-      transform: translateY(-2px);
-    }
-
-    .btn-ghost {
-      color: var(--dorado);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-    }
-
-    .btn-ghost:hover {
-      opacity: 1;
-    }
-
-    .btn-ghost::after {
-      content: '→';
-      transition: transform 0.3s;
-    }
-
-    .btn-ghost:hover::after {
-      transform: translateX(4px);
-    }
-
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-photo {
-      position: absolute;
-      inset: 0;
-      background: var(--cafe);
-      overflow: hidden;
-    }
-
-    /* Photo fill with brand overlay */
-    .hero-photo::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(105deg,
-          var(--carbon) 0%,
-          rgba(26, 20, 16, 0.65) 35%,
-          transparent 65%);
-      z-index: 2;
-    }
-
-    .hero-photo::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom,
-          rgba(92, 26, 40, 0.2) 0%,
-          transparent 40%,
-          rgba(26, 20, 16, 0.5) 100%);
-      z-index: 3;
-    }
-
-    .hero-photo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: saturate(0.85) contrast(1.05) sepia(0.15);
-      animation: fadeIn 1.5s ease 0.3s both;
-    }
-
-    /* Mandala decoration */
-    .hero-mandala {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 4;
-      width: 320px;
-      height: 320px;
-      opacity: 0.06;
-      animation: spin 80s linear infinite;
-    }
-
-    /* Scroll indicator */
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 6rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      animation: fadeIn 1s ease 1.2s both;
-    }
-
-    .hero-scroll span {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      opacity: 0.6;
-      writing-mode: vertical-rl;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, var(--dorado), transparent);
-      animation: pulse 2s ease infinite;
-    }
-
-    /* ── SECTION SHARED ──────────────────────────── */
-    section {
-      position: relative;
-      scroll-margin-top: 80px;
-    }
-
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--dorado);
-      opacity: 0.5;
-    }
-
-    /* ── STRIP — ABOUT ───────────────────────────── */
-    #sobre {
-      background: var(--crema);
-      color: var(--carbon);
-      padding: 7rem 6rem;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    #sobre .section-label {
-      color: var(--bordo);
-    }
-
-    #sobre .section-label::before {
-      background: var(--bordo);
-    }
-
-    .about-left {}
-
-    .about-left h2 {
-      font-size: clamp(2.5rem, 4vw, 4rem);
-      color: var(--carbon);
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-
-    .about-left h2 em {
-      color: var(--bordo);
-      font-style: italic;
-    }
-
-    .about-accent {
-      width: 80px;
-      height: 3px;
-      background: var(--dorado);
-      margin-bottom: 2rem;
-      transform-origin: left;
-    }
-
-    .about-right p {
-      font-size: 1.05rem;
-      color: var(--cafe);
-      line-height: 1.9;
-      margin-bottom: 1.5rem;
-      opacity: 0.9;
-    }
-
-    .about-right p strong {
-      color: var(--bordo);
-      font-weight: 600;
-    }
-
-    .about-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 2rem;
-    }
-
-    .tag {
-      background: var(--bordo);
-      color: var(--arena);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-    }
-
-    /* ── QUOTE STRIP ─────────────────────────────── */
-    .quote-strip {
-      background: var(--bordo);
-      padding: 5rem 6rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quote-strip::before {
-      content: '\201C';
-      position: absolute;
-      top: -2rem;
-      left: 4rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20rem;
-      color: rgba(255, 255, 255, 0.04);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .quote-strip blockquote {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--crema);
-      max-width: 860px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.5;
-      position: relative;
-      z-index: 1;
-    }
-
-    .quote-strip cite {
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      font-style: normal;
-    }
-
-    /* ── PROGRAM ─────────────────────────────────── */
-    #programa {
-      background: var(--carbon);
-      padding: 7rem 6rem;
-    }
-
-    .program-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 5rem;
-      align-items: end;
-    }
-
-    .program-header h2 {
-      font-size: clamp(2.5rem, 4vw, 4rem);
-      color: var(--crema);
-    }
-
-    .program-header h2 em {
-      color: var(--dorado);
-      font-style: italic;
-      display: block;
-    }
-
-    .program-header-desc {
-      color: var(--arena);
-      opacity: 0.75;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5px;
-      background: rgba(191, 140, 44, 0.1);
-    }
-
-    .mc-card {
-      background: var(--cafe);
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.4s;
-      cursor: default;
-    }
-
-    .mc-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 0;
-      background: var(--dorado);
-      transition: height 0.5s ease;
-    }
-
-    .mc-card:hover {
-      background: rgba(58, 31, 15, 0.95);
-    }
-
-    .mc-card:hover::before {
-      height: 100%;
-    }
-
-    .mc-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem;
-      font-weight: 300;
-      color: var(--bordo);
-      opacity: 0.4;
-      line-height: 1;
-      margin-bottom: 1rem;
-      transition: color 0.4s, opacity 0.4s;
-    }
-
-    .mc-card:hover .mc-num {
-      color: var(--dorado);
-      opacity: 0.5;
-    }
-
-    .mc-card h3 {
-      font-size: 1.6rem;
-      color: var(--crema);
-      margin-bottom: 0.8rem;
-    }
-
-    .mc-card h3 em {
-      color: var(--dorado);
-      font-style: italic;
-    }
-
-    .mc-card p {
-      font-size: 0.92rem;
-      color: var(--arena);
-      opacity: 0.7;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .mc-details {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .mc-details li {
-      font-size: 0.82rem;
-      color: var(--dorado);
-      opacity: 0.75;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-    }
-
-    .mc-details li::before {
-      content: '◆';
-      font-size: 0.5rem;
-      margin-top: 0.35rem;
-      flex-shrink: 0;
-    }
-
-    .mc-duration {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gris);
-    }
-
-    /* ── FOR WHOM ────────────────────────────────── */
-    #para-quien {
-      background: var(--crema);
-      color: var(--carbon);
-      padding: 7rem 6rem;
-    }
-
-    #para-quien .section-label {
-      color: var(--bordo);
-    }
-
-    #para-quien .section-label::before {
-      background: var(--bordo);
-    }
-
-    #para-quien h2 {
-      font-size: clamp(2.5rem, 4vw, 4rem);
-      color: var(--carbon);
-      max-width: 700px;
-      margin-bottom: 4rem;
-      line-height: 1.1;
-    }
-
-    #para-quien h2 em {
-      color: var(--bordo);
-      font-style: italic;
-    }
-
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      max-width: 1100px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-    }
-
-    @media (max-width: 900px) {
-      .pricing-cards {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: 2rem auto;
-      }
-    }
-
-    .who-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .who-card {
-      background: var(--carbon);
-      padding: 2.5rem;
-      position: relative;
-      border-top: 2px solid var(--bordo);
-    }
-
-    .who-icon {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-      display: block;
-      animation: floatY 4s ease infinite;
-    }
-
-    .who-card:nth-child(2) .who-icon {
-      animation-delay: 1s;
-    }
-
-    .who-card:nth-child(3) .who-icon {
-      animation-delay: 2s;
-    }
-
-    .who-card h3 {
-      font-size: 1.3rem;
-      color: var(--crema);
-      margin-bottom: 0.8rem;
-    }
-
-    .who-card p {
-      font-size: 0.9rem;
-      color: var(--arena);
-      opacity: 0.75;
-      line-height: 1.7;
-    }
-
-    /* NOT for section */
-    .not-for {
-      margin-top: 4rem;
-      padding: 2.5rem 3rem;
-      background: rgba(92, 26, 40, 0.08);
-      border-left: 3px solid var(--bordo);
-    }
-
-    .not-for h4 {
-      font-size: 1rem;
-      color: var(--bordo);
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-    }
-
-    .not-for p {
-      font-size: 0.92rem;
-      color: var(--cafe);
-      line-height: 1.7;
-      opacity: 0.85;
-    }
-
-    /* ── EXPERIENCE ──────────────────────────────── */
-    #experiencia {
-      background: var(--carbon);
-      padding: 7rem 6rem;
-    }
-
-    #experiencia h2 {
-      font-size: clamp(2.5rem, 4vw, 4rem);
-      color: var(--crema);
-      margin-bottom: 4rem;
-      text-align: center;
-    }
-
-    #experiencia h2 em {
-      color: var(--dorado);
-      font-style: italic;
-    }
-
-    .exp-pillars {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid rgba(191, 140, 44, 0.12);
-    }
-
-    .pillar {
-      padding: 3rem 2.5rem;
-      border-right: 1px solid rgba(191, 140, 44, 0.12);
-      position: relative;
-      transition: background 0.4s;
-    }
-
-    .pillar:last-child {
-      border-right: none;
-    }
-
-    .pillar:hover {
-      background: rgba(58, 31, 15, 0.6);
-    }
-
-    .pillar-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
-      font-weight: 300;
-      color: var(--dorado);
-      opacity: 0.2;
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .pillar h3 {
-      font-size: 1.15rem;
-      color: var(--crema);
-      margin-bottom: 0.8rem;
-    }
-
-    .pillar p {
-      font-size: 0.88rem;
-      color: var(--arena);
-      opacity: 0.65;
-      line-height: 1.7;
-    }
-
-    /* ── TESTIMONIALS  ── */
-    #testimonios {
-      background: var(--bordo);
-      padding: 7rem 0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .testi-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .testi-header h2 {
-      font-size: clamp(2rem, 3.5vw, 3.5rem);
-      color: var(--crema);
-    }
-
-    .testi-header h2 em {
-      color: var(--dorado);
-      font-style: italic;
-    }
-
-    .testi-feed {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      align-items: start;
-    }
-
-    .testi-item {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .testi-item img {
-      width: auto;
-      /* Natural width */
-      max-width: 100%;
-      /* Fit container but don't stretch */
-      height: auto;
-      border: 1px solid rgba(191, 140, 44, 0.15);
-      border-radius: 4px;
-      display: block;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
-    }
-
-    .testi-name-simple {
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      font-weight: 500;
-      margin-top: 1.5rem;
-      text-align: center;
-      opacity: 0.8;
-    }
-
-    @media (max-width: 768px) {
-      .testi-feed {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .testi-header h2 {
-        font-size: 2.2rem;
-      }
-    }
-
-    /* ── LIGHTBOX (VISOR) - Estructura Reforzada ── */
-    #testiLightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      cursor: zoom-out;
-      background: transparent;
-      /* Fondo en capa separada para evitar bugs de fijación */
-    }
-
-    #testiLightbox.active {
-      display: flex;
-    }
-
-    /* Capa de fondo con el desenfoque para que no afecte a la fijeza de la cruz */
-    .lightbox-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.98);
-      backdrop-filter: blur(10px);
-      z-index: 2001;
-    }
-
-    /* Área de scroll aislada */
-    .lightbox-scroll-area {
-      position: absolute;
-      inset: 0;
-      overflow: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 2002;
-    }
-
-    .lightbox-content {
-      position: relative;
-      width: 100%;
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 20px;
-    }
-
-    .lightbox-content img {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      object-fit: contain;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-      border-radius: 4px;
-      cursor: zoom-in;
-      transition: width 0.3s ease;
-      margin: auto;
-    }
-
-    .lightbox-content img.zoomed {
-      width: 180%;
-      max-width: none;
-      cursor: zoom-out;
-    }
-
-    /* CRUZ DE CIERRE: Ahora 100% fija respecto a la pantalla del móvil */
-    .lightbox-close {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      width: 50px;
-      height: 50px;
-      color: white;
-      font-size: 1.8rem;
-      background: var(--bordo);
-      border: 2px solid var(--dorado);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3000;
-      /* Siempre por encima de todo */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-
-    .lightbox-close:hover {
-      background: var(--dorado);
-      color: var(--carbon);
-    }
-
-
-    .testi-item img {
-      cursor: default;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .testi-item img:not(.no-zoom) {
-      cursor: zoom-in;
-    }
-
-    .testi-item img:hover {
-      transform: translateY(-5px);
-      filter: brightness(1.1);
-    }
-
-    /* ── QUOTE BOX ───────────────────────────────── */
-    #ani p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 0.8rem;
-      color: var(--carbon);
-    }
-
-    .quote-box {
-      background: rgba(191, 140, 44, 0.05);
-      border-left: 2px solid var(--dorado);
-      padding: 1rem 1.5rem;
-      margin: 1.2rem 0;
-      position: relative;
-      display: inline-block;
-      width: fit-content;
-      max-width: 90%;
-    }
-
-    .quote-box blockquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--cafe);
-      line-height: 1.4;
-      margin-bottom: 0.6rem;
-    }
-
-    .quote-box cite {
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gris);
-      font-style: normal;
-    }
-
-    /* ── ANI BIO ─────────────────────────────────── */
-    #ani {
-      background: var(--crema);
-      padding: 5rem 6rem;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .ani-photo-wrap {
-      position: relative;
-    }
-
-    .ani-photo-frame {
-      width: 100%;
-      max-width: 440px;
-      aspect-ratio: 3/4;
-      background: var(--cafe);
-      position: relative;
-      overflow: hidden;
-      margin: 0 auto;
-    }
-
-    .ani-photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: saturate(0.9) sepia(0.1) contrast(1.05);
-    }
-
-    .ani-photo-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom,
-          transparent 50%,
-          rgba(58, 31, 15, 0.6) 100%);
-    }
-
-    /* Decorative border offset */
-    .ani-photo-wrap::before {
-      content: '';
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      right: -1.5rem;
-      bottom: -1.5rem;
-      border: 1px solid var(--dorado);
-      opacity: 0.3;
-      z-index: 0;
-    }
-
-    .ani-photo-frame {
-      position: relative;
-      z-index: 1;
-    }
-
-    .ani-content .section-label {
-      color: var(--bordo);
-    }
-
-    .ani-content .section-label::before {
-      background: var(--bordo);
-    }
-
-    .ani-content h2 {
-      font-size: clamp(2rem, 3vw, 3rem);
-      color: var(--carbon);
-      margin-bottom: 0.2rem;
-    }
-
-    .ani-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-style: italic;
-      color: var(--bordo);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-
-    .ani-content p {
-      font-size: 1rem;
-      color: var(--cafe);
-      line-height: 1.9;
-      margin-bottom: 1.3rem;
-      opacity: 0.9;
-    }
-
-    .ani-content p strong {
-      color: var(--bordo);
-      font-weight: 600;
-    }
-
-    .ani-credentials {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
-    .cred-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 0.88rem;
-      color: var(--cafe);
-      opacity: 0.8;
-    }
-
-    .cred-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--bordo);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* Highlight box for bio */
-    .highlight-box {
-      background: rgba(158, 74, 46, 0.08);
-      border: 1px solid rgba(158, 74, 46, 0.2);
-      padding: 2rem;
-      margin: 2rem 0;
-      border-radius: 4px;
-      position: relative;
-    }
-
-    .highlight-box::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--terra);
-    }
-
-    .highlight-box p {
-      margin-bottom: 0 !important;
-      font-style: italic;
-      color: var(--bordo) !important;
-      font-weight: 500;
-    }
-
-    /* ── INVESTMENT / INSCRIPCIÓN ────────────────── */
-    #inscripcion {
-      background: var(--carbon);
-      padding: 7rem 6rem;
-      text-align: center;
-    }
-
-    #inscripcion .section-label {
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    #inscripcion h2 {
-      font-size: clamp(2.5rem, 4vw, 4.5rem);
-      color: var(--crema);
-      margin-bottom: 1.5rem;
-    }
-
-    #inscripcion h2 em {
-      color: var(--dorado);
-      font-style: italic;
-    }
-
-    #inscripcion>.desc {
-      font-size: 1.05rem;
-      color: var(--arena);
-      opacity: 0.7;
-      max-width: 600px;
-      margin: 0 auto 4rem;
-      line-height: 1.8;
-    }
-
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: minmax(0, 520px);
-      gap: 1.5rem;
-      justify-content: center;
-      margin-bottom: 4rem;
-    }
-
-    .price-card {
-      background: var(--cafe);
-      padding: 3rem;
-      text-align: left;
-      border-top: 2px solid rgba(191, 140, 44, 0.2);
-      transition: border-color 0.4s, transform 0.3s;
-    }
-
-    .price-card:hover {
-      border-color: var(--dorado);
-      transform: translateY(-4px);
-    }
-
-    .price-card.featured {
-      background: var(--bordo);
-      border-top-color: var(--dorado);
-    }
-
-    .price-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      margin-bottom: 1.5rem;
-    }
-
-    .price-card.featured .price-label {
-      color: var(--arena);
-    }
-
-    .price-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      color: var(--crema);
-      margin-bottom: 0.5rem;
-    }
-
-    .price-desc {
-      font-size: 0.88rem;
-      color: var(--arena);
-      opacity: 0.65;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    .price-includes {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .price-includes li {
-      font-size: 0.88rem;
-      color: var(--arena);
-      opacity: 0.8;
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
-    }
-
-    .price-includes li::before {
-      content: '✓';
-      color: var(--dorado);
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.5rem;
-    }
-
-    .price-row .label {
-      font-size: 0.8rem;
-      color: var(--arena);
-      opacity: 0.6;
-    }
-
-    .price-row .value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: var(--crema);
-    }
-
-    .price-date-box {
-      background: rgba(58, 31, 15, 0.4);
-      border-left: 3px solid var(--dorado);
-      padding: 1.2rem;
-      margin: 2rem 0;
-      text-align: left;
-    }
-
-    .date-info {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 0.95rem;
-      color: var(--dorado2);
-      margin-bottom: 0.4rem;
-    }
-
-    .date-note {
-      font-size: 0.75rem;
-      color: var(--arena);
-      opacity: 0.5;
-      font-style: italic;
-    }
-
-    .price-btn {
-      display: block;
-      width: 100%;
-      padding: 1.1rem;
-      text-align: center;
-      background: var(--bordo);
-      color: var(--arena);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .price-btn:hover {
-      background: var(--bordo2);
-      transform: translateY(-2px);
-    }
-
-    .price-card.featured .price-btn {
-      background: var(--dorado);
-      color: var(--carbon);
-    }
-
-    .price-card.featured .price-btn:hover {
-      background: var(--dorado2);
-    }
-
-    .inscripcion-note {
-      font-size: 0.85rem;
-      color: var(--gris);
-      max-width: 500px;
-      margin: 0 auto;
-      line-height: 1.7;
-      font-style: italic;
-    }
-
-    /* ── FAQ STRIP ───────────────────────────────── */
-    #faq {
-      background: var(--crema);
-      color: var(--carbon);
-      padding: 7rem 6rem;
-    }
-
-    #faq .section-label {
-      color: var(--bordo);
-    }
-
-    #faq .section-label::before {
-      background: var(--bordo);
-    }
-
-    #faq h2 {
-      font-size: clamp(2rem, 3.5vw, 3.5rem);
-      color: var(--carbon);
-      max-width: 600px;
-      margin-bottom: 4rem;
-    }
-
-    #faq h2 em {
-      color: var(--bordo);
-      font-style: italic;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      max-width: 800px;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid rgba(92, 26, 40, 0.15);
-      overflow: hidden;
-    }
-
-    .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 1.8rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Jost', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--carbon);
-      cursor: pointer;
-      transition: color 0.3s;
-      gap: 2rem;
-    }
-
-    .faq-q:hover {
-      color: var(--bordo);
-    }
-
-    .faq-icon {
-      width: 24px;
-      height: 24px;
-      border: 1px solid var(--bordo);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1rem;
-      color: var(--bordo);
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .faq-item.open .faq-icon {
-      background: var(--bordo);
-      color: var(--crema);
-    }
-
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, padding 0.3s;
-      font-size: 0.95rem;
-      color: var(--cafe);
-      line-height: 1.8;
-      opacity: 0.85;
-      padding: 0;
-    }
-
-    .faq-item.open .faq-a {
-      max-height: 600px;
-      padding-bottom: 1.8rem;
-    }
-
-    /* ── CONTACT / CTA FINAL ─────────────────────── */
-    #contacto {
-      background: var(--carbon);
-      padding: 8rem 6rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(92, 26, 40, 0.3) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    #contacto h2 {
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      color: var(--crema);
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    #contacto h2 em {
-      color: var(--dorado);
-      font-style: italic;
-      display: block;
-    }
-
-    #contacto p {
-      font-size: 1.05rem;
-      color: var(--arena);
-      opacity: 0.7;
-      max-width: 540px;
-      margin: 0 auto 3.5rem;
-      line-height: 1.8;
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-links {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.9rem 2rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .contact-link.wa {
-      background: var(--salvia);
-      color: var(--crema);
-    }
-
-    .contact-link.wa:hover {
-      background: #7aA07a;
-    }
-
-    .contact-link.ig {
-      background: var(--bordo);
-      color: var(--arena);
-    }
-
-    .contact-link.ig:hover {
-      background: var(--bordo2);
-    }
-
-    .contact-link.yt {
-      background: var(--terra);
-      color: var(--arena);
-    }
-
-    .contact-link.yt:hover {
-      background: #b05535;
-    }
-
-    /* ── FOOTER ──────────────────────────────────── */
-    footer {
-      background: var(--cafe);
-      padding: 3rem 6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(191, 140, 44, 0.1);
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--dorado);
-      font-weight: 600;
-    }
-
-    .footer-logo span {
-      color: var(--arena);
-      font-weight: 300;
-    }
-
-    .footer-copy {
-      font-size: 0.78rem;
-      color: var(--gris);
-      opacity: 0.6;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .footer-socials a {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(191, 140, 44, 0.05);
-      border: 1px solid rgba(191, 140, 44, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--dorado);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-decoration: none;
-    }
-
-    .footer-socials a:hover {
-      background: var(--dorado);
-      color: var(--carbon);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(191, 140, 44, 0.2);
-    }
-
-    .footer-socials svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    .footer-socials a.wa:hover {
-      border-color: #25D366;
-      color: #25D366;
-      background: rgba(37, 211, 102, 0.1);
-    }
-
-    .footer-socials a.ig:hover {
-      border-color: #E4405F;
-      color: #E4405F;
-      background: rgba(228, 64, 95, 0.1);
-    }
-
-    .footer-socials a.yt:hover {
-      border-color: #FF0000;
-      color: #FF0000;
-      background: rgba(255, 0, 0, 0.1);
-    }
-
-    .footer-socials a.lt:hover {
-      border-color: #39E09B;
-      color: #39E09B;
-      background: rgba(57, 224, 155, 0.1);
-    }
-
-    /* For solid hover on dark */
-    .footer-socials a:hover svg {
-      fill: currentColor;
-    }
-
-    /* Tooltip styles */
-    .footer-socials a {
-      position: relative;
-    }
-
-    .footer-socials a::after {
-      content: attr(title);
-      position: absolute;
-      bottom: 120%;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: var(--carbon);
-      color: var(--arena);
-      padding: 0.4rem 0.8rem;
-      font-size: 0.65rem;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      pointer-events: none;
-      border: 1px solid rgba(191, 140, 44, 0.2);
-      z-index: 10;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .footer-socials a:hover::after {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* ── DECORATIVE SVG MANDALA ──────────────────── */
-    .deco-mandala {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.04;
-    }
-
-    /* ── HAMBURGER BUTTON ───────────────────────── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 26px;
-      height: 18px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 200;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--dorado);
-      border-radius: 2px;
-      transition: transform 0.35s ease, opacity 0.25s ease;
-      transform-origin: left center;
-    }
-
-    .hamburger.open span:nth-child(1) {
-      transform: rotate(45deg) translate(1px, -2px);
-    }
-
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-
-    .hamburger.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(1px, 2px);
-    }
-
-    /* ── MOBILE NAV OVERLAY ──────────────────────── */
-    .mobile-nav {
-      position: fixed;
-      inset: 0;
-      background: rgba(26, 20, 16, 0.98);
-      z-index: 150;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-
-    .mobile-nav.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-nav ul {
-      list-style: none;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 2.2rem;
-    }
-
-    .mobile-nav-link {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem;
-      font-weight: 600;
-      color: var(--crema);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      display: block;
-      transition: color 0.3s;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: color 0.3s, opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .mobile-nav.open .mobile-nav-link {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .mobile-nav.open li:nth-child(1) .mobile-nav-link {
-      transition-delay: 0.05s;
-    }
-
-    .mobile-nav.open li:nth-child(2) .mobile-nav-link {
-      transition-delay: 0.10s;
-    }
-
-    .mobile-nav.open li:nth-child(3) .mobile-nav-link {
-      transition-delay: 0.15s;
-    }
-
-    .mobile-nav.open li:nth-child(4) .mobile-nav-link {
-      transition-delay: 0.20s;
-    }
-
-    .mobile-nav.open li:nth-child(5) .mobile-nav-link {
-      transition-delay: 0.25s;
-    }
-
-    .mobile-nav-link:hover {
-      color: var(--dorado);
-    }
-
-    .mobile-nav-cta {
-      font-family: 'Jost', sans-serif !important;
-      font-size: 0.9rem !important;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--arena) !important;
-      background: var(--bordo);
-      padding: 1rem 2.5rem;
-      border-radius: 2px;
-      transition: background 0.3s, opacity 0.4s ease, transform 0.4s ease !important;
-    }
-
-    .mobile-nav-cta:hover {
-      background: var(--bordo2);
-    }
-
-    /* ── MOBILE ──────────────────────────────────── */
-    @media (max-width: 900px) {
-      nav {
-        padding: 1rem 1.5rem;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      #hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-left {
-        padding: 7rem 2rem 4rem;
-      }
-
-      .hero-right {
-        height: 50vh;
-      }
-
-      .hero-photo-img {
-        object-position: center center;
-      }
-
-      #sobre,
-      #ani {
-        grid-template-columns: 1fr;
-        padding: 4rem 2rem;
-        gap: 3rem;
-      }
-
-      #programa,
-      #para-quien,
-      #experiencia,
-      #testimonios,
-      #inscripcion,
-      #faq,
-      #contacto {
-        padding: 4rem 2rem;
-      }
-
-      .program-header {
-        grid-template-columns: 1fr;
-      }
-
-      .program-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .who-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .exp-pillars {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .testi-card {
-        flex: 0 0 90%;
-      }
-
-      .testi-grid {
-        gap: 1rem;
-      }
-
-      .pricing-cards {
-        grid-template-columns: 1fr;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-        padding: 2rem;
-      }
-
-      .hero-scroll {
-        display: none;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f0fa">
+<title>Sentir desde Adentro · Ani Franza M.</title>
+<meta name="description" content="Aprende A Escucharte. Programa de 4 encuentros semanales donde vas a recorrer el camino de regreso: de las emociones como problema, a las emociones como brújula.">
+<meta name="keywords" content="Coaching, Emociones, Aprende A Escucharte, Ani Franza M., Desarrollo Personal, Crecimiento, Gestalt, Constelaciones">
+<meta property="og:title" content="Sentir desde Adentro · Ani Franza M.">
+<meta property="og:description" content="Descubrí el programa de 4 encuentros semanales: Aprende A Escucharte. No venís a aprender técnicas, venís a recordar algo que ya sabés en el cuerpo.">
+<meta property="og:image" content="hero_abstract_violeta.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.png" type="image/png">
+<style>
+:root{--ink:#352b3e;--muted:#756b7d;--violet:#76518d;--violet2:#a889bb;--lav:#eee5f3;--cream:#fbf8f5;--line:#e7dfea;--white:#fff;--gold:#e2b552}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}img{max-width:100%}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+em{color:var(--violet)}
+
+/* Encabezado */
+header{position:sticky;top:0;z-index:5;background:#fbf8f5ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{display:block;width:150px;height:auto;max-height:54px;object-fit:contain}
+.brand span{font:italic 15px Georgia,serif;color:var(--violet);white-space:nowrap}
+header nav{display:flex;gap:24px;font-size:13px;color:var(--muted)}
+header nav a{white-space:nowrap}header nav a:hover{color:var(--violet)}
+
+/* Botones */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;background:var(--violet);color:#fff;padding:13px 21px;border-radius:999px;font-weight:650;font-size:14px;transition:.2s;text-align:center}
+.btn:hover{background:#5f3e75;transform:translateY(-1px)}
+.btn.secondary{background:transparent;color:var(--violet);border:1px solid #cbb8d5}
+.btn.secondary:hover{background:#fff}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+/* Portada */
+.hero{padding:86px 0 78px;background:radial-gradient(ellipse at 85% 15%,#e9dcef 0,transparent 35%),linear-gradient(135deg,#fbf8f5,#f2eaf5)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:64px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--violet);font-weight:750;line-height:1.8}
+.hero h1{font:clamp(48px,7vw,82px)/.98 Georgia,serif;font-weight:400;letter-spacing:-.045em;margin:18px 0 12px}
+.hero h1 em{font-weight:400}
+.hero-sub{font:italic clamp(22px,2.6vw,30px) Georgia,serif;color:var(--violet);margin:0 0 22px}
+.lead{font-size:19px;line-height:1.6;max-width:650px;color:#5d5364;margin:0}
+.hero-note{font-size:13px;color:var(--muted);margin:16px 0 0}
+.hero-art{border-radius:32px;overflow:hidden;border:1px solid #e2d5e9;box-shadow:0 18px 45px #4b31521c;aspect-ratio:1/1}
+.hero-art img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Secciones */
+section{padding:82px 0}
+.section-head{max-width:700px;margin-bottom:38px}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.kicker{color:var(--violet);font-size:11px;font-weight:750;letter-spacing:.16em;text-transform:uppercase}
+h2{font:clamp(34px,4.5vw,52px)/1.08 Georgia,serif;font-weight:400;margin:12px 0}
+h2 em{font-weight:400}
+.section-head p{color:var(--muted);font-size:17px}
+
+/* Punto de partida */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.split p{color:#5d5364;font-size:17px;margin:0 0 18px}
+.split strong{color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.tag{background:#fff;border:1px solid #e3d8e9;padding:7px 14px;border-radius:99px;font-size:13px;color:#66566f}
+
+/* Quién soy */
+.about{background:#f1eaf4}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:54px;align-items:start}
+.about-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:22px;box-shadow:0 18px 45px #4b31521c;position:sticky;top:100px}
+.about p{color:#62586a;margin:0 0 16px}
+.about p strong{color:var(--ink)}
+.about-quote{margin:26px 0;padding:22px 26px;background:#fff;border-left:3px solid var(--violet);border-radius:0 16px 16px 0;font:italic 21px/1.45 Georgia,serif;color:var(--violet)}
+
+/* Frase */
+.statement{background:#fff;border-block:1px solid var(--line);text-align:center}
+.statement blockquote{font:clamp(26px,4vw,39px)/1.3 Georgia,serif;margin:0 auto;color:var(--violet);max-width:850px}
+.statement cite{display:block;margin-top:16px;font-style:normal;color:var(--muted);font-size:14px}
+
+/* Tarjetas */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
+.card h3{font:24px/1.25 Georgia,serif;font-weight:400;margin:10px 0}
+.card p{color:var(--muted);margin:0}
+.card-icon{font-size:28px;line-height:1}
+.number{font-size:12px;letter-spacing:.14em;color:var(--violet);font-weight:750}
+.not-for{margin-top:22px;background:#f6f0f8;border:1px dashed #d4c2de;border-radius:20px;padding:26px 30px}
+.not-for h4{font:22px Georgia,serif;font-weight:400;margin:0 0 8px;color:var(--violet)}
+.not-for p{margin:0;color:#62586a}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.alt{background:#f1eaf4}
+
+
+/* Inscripción */
+.offer{max-width:620px;margin:0 auto;border-radius:24px;padding:38px;background:linear-gradient(145deg,#f0e7f4,#fff);border:1px solid #d8c6e1;box-shadow:0 18px 45px #4b31521a}
+.offer h3{font:32px Georgia,serif;font-weight:400;margin:8px 0}
+.offer > p{color:var(--muted);margin:0}
+.price{font-size:26px;color:var(--violet);font-weight:700;margin:22px 0 4px}
+.price-where{font:500 14px Inter,system-ui,sans-serif;color:var(--muted)}
+.date-box{margin:18px 0;padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;font-size:14px;color:#5d5364}
+.includes{list-style:none;padding:0;margin:0 0 26px}
+.includes li{position:relative;padding-left:26px;margin:8px 0;color:#5d5364}
+.includes li::before{content:"✓";position:absolute;left:0;color:var(--violet);font-weight:700}
+.offer .btn{width:100%}
+.offer .btn{white-space:normal}.offer-note{text-align:center;color:var(--muted);margin-top:24px}
+.offer-note a{color:var(--violet);border-bottom:1px solid #cbb8d5}
+
+/* Preguntas frecuentes */
+.faq{max-width:850px;margin:0 auto}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:10px 0}
+.faq summary{cursor:pointer;font-weight:650;color:var(--violet)}
+.faq details p{color:var(--muted);margin:12px 0 0}
+
+/* Contacto */
+.contact{background:linear-gradient(135deg,#e9dcef,#f7f0f7);text-align:center}
+.contact h2{font-size:clamp(38px,5vw,58px)}
+.contact p{max-width:620px;margin:0 auto 26px;color:#665b6d}
+
+/* Botón flotante de WhatsApp */
+.wa-float{position:fixed;bottom:22px;right:20px;width:54px;height:54px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px #0000002e;z-index:9;transition:.3s}
+.wa-float:hover{transform:scale(1.08)}
+
+@media(max-width:960px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){
+.nav{height:64px}header nav{display:none}.brand img{width:120px}.brand span{display:none}
+.hero{padding:60px 0}.hero-grid,.about-grid,.split{grid-template-columns:1fr;gap:32px}
+.hero-art{grid-row:1;max-width:360px;margin:0 auto;width:100%}
+.hero h1{font-size:58px}
+.about-photo{position:static;max-width:420px;margin:0 auto;display:block}
+.cards,.pillars{grid-template-columns:1fr}
+section{padding:62px 0}.offer{padding:28px 22px}
+}
+/* Footer (igual al de la página principal) */
+.site-footer{background:#2b2233;color:#cbbfd3;padding:46px 0;font-size:14px;border-top:1px solid #4a3d55}.foot-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:28px}.foot-brand{font:24px/1.2 Georgia,serif;color:#e2b552}.foot-brand b{font-weight:400;background:linear-gradient(145deg,#fbe39a 0%,#e2b552 45%,#b98428 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.foot-brand span{color:#fbf8f5}.foot-info{text-align:left}.foot-info p{margin:0 0 12px;color:#9d90a7}.foot-legal{display:flex;gap:18px;flex-wrap:wrap}.foot-legal a{color:#9d90a7;text-decoration:none;transition:color .2s}.foot-legal a:hover{color:#fbf8f5}.foot-legal span{color:#5d4f69}.foot-social{display:flex;justify-content:flex-end;gap:16px}.social{position:relative;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#c9a96e;border:1px solid #5d4f69;background:#33293d;transition:transform .25s,box-shadow .25s,color .25s,border-color .25s}.social svg{width:24px;height:24px}.social:hover,.social:focus-visible{transform:translateY(-6px);color:#2b2233;border-color:#f3d37e;background:linear-gradient(145deg,#fbe39a 0%,#e2b552 45%,#b98428 100%);box-shadow:0 10px 22px #0006,0 0 18px #e8be5c88}.social::after{content:attr(data-label);position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,6px);background:#1c1622;color:#fbf8f5;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:6px;border:1px solid #4a3d55;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}.social:hover::after,.social:focus-visible::after{opacity:1;transform:translate(-50%,0)}@media(max-width:760px){.foot-grid{grid-template-columns:1fr;text-align:center}.foot-info{text-align:center}.foot-legal{justify-content:center}.foot-social{justify-content:center;padding-top:30px}}
+.menu-btn{display:none;width:44px;height:44px;flex:0 0 44px;border:1px solid #cbb8d5;border-radius:50%;background:#fff;color:var(--violet);align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer;padding:0}.menu-btn span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s,opacity .25s}header.open .menu-btn span:nth-child(1){transform:translateY(6px) rotate(45deg)}header.open .menu-btn span:nth-child(2){opacity:0}header.open .menu-btn span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}@media(max-width:1100px){header nav{display:none}.menu-btn{display:inline-flex}.nav{gap:10px}.nav>.btn{margin-left:auto;padding:11px 16px;font-size:13px}header.open nav{display:flex;position:absolute;top:calc(100% + 8px);left:16px;right:16px;flex-direction:column;gap:0;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px #4b315226;padding:8px;font-size:16px;z-index:10}header.open nav a{padding:13px 16px;border-radius:12px;color:var(--ink)}header.open nav a:hover{background:var(--lav);color:var(--violet)}}
+.about-link{margin-top:22px}.about-link a{color:var(--violet);font-weight:650;border-bottom:1px solid #cbb8d5;transition:border-color .2s}.about-link a:hover{border-color:var(--violet)}.foot-brand a{transition:opacity .2s}.foot-brand a:hover{opacity:.8}
+</style>
 </head>
-
-
 <body>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <a href="#" class="nav-logo">Ani Franza M. <span>/ Sentir desde Adentro</span></a>
-    <ul class="nav-links">
-      <li><a href="#programa">El Programa</a></li>
-      <li><a href="#para-quien">¿Para quién?</a></li>
-      <li><a href="#ani">Quién soy</a></li>
-      <li><a href="#testimonios">Testimonios</a></li>
-      <li><a href="#inscripcion" class="nav-cta">Reservar mi lugar</a></li>
-    </ul>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="Sentir desde Adentro, inicio"><img src="logo-dorado-web.png" alt="Ani Franza M."><span>/ Sentir desde Adentro</span></a>
+    <nav>
+      <a href="#programa">El Programa</a>
+      <a href="#para-quien">¿Para quién?</a>
+      <a href="#ani">Quién soy</a>
+      <a href="#inscripcion">Inscripción</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </nav>
+    <a class="btn" href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Quiero+reservar+mi+lugar+en+el+Programa+Sentir+desde+Adentro.+%C2%BFMe+pas%C3%A1s+los+datos+para+hacer+el+pago%3F" target="_blank" rel="noopener noreferrer">Reservar mi lugar</a>
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- MOBILE NAV OVERLAY -->
-  <nav class="mobile-nav" id="mobileNav" aria-label="Menú mobile">
-    <ul>
-      <li><a href="#programa" class="mobile-nav-link">El Programa</a></li>
-      <li><a href="#para-quien" class="mobile-nav-link">¿Para quién?</a></li>
-      <li><a href="#ani" class="mobile-nav-link">Quién soy</a></li>
-      <li><a href="#testimonios" class="mobile-nav-link">Testimonios</a></li>
-      <li><a href="#inscripcion" class="mobile-nav-link mobile-nav-cta">Reservar mi lugar</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Programa de 4 encuentros semanales · Grupos Reducidos · Cupos Limitados · Inversión:
-        USD 45
+<!-- PORTADA -->
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Programa de 4 encuentros semanales · Grupos Reducidos · Cupos Limitados · Inversión: USD 45</div>
+      <h1>Sentir desde<br><em>Adentro</em></h1>
+      <p class="hero-sub">Aprende A Escucharte</p>
+      <p class="lead">No venís a aprender técnicas. Venís a recordar algo que ya sabés en el cuerpo pero que el ruido del mundo te hizo olvidar: que tus emociones no son el problema. Son la información más honesta que tenés. Al terminar el programa, vas a saber escucharlas.</p>
+      <div class="actions">
+        <a class="btn" href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Quiero+reservar+mi+lugar+en+el+Programa+Sentir+desde+Adentro.+%C2%BFMe+pas%C3%A1s+los+datos+para+hacer+el+pago%3F" target="_blank" rel="noopener noreferrer">Reservar mi lugar</a>
+        <a class="btn secondary" href="#programa">Ver el programa</a>
       </div>
-      <h1 class="hero-title">Sentir desde<br>Adentro</h1>
-      <div class="hero-title-sub serif-italic">Aprende A Escucharte</div>
-      <p class="hero-desc">
-        No venís a aprender técnicas. Venís a recordar algo que ya sabés
-        en el cuerpo pero que el ruido del mundo te hizo olvidar:
-        que tus emociones no son el problema. Son la información más
-        honesta que tenés. Al terminar el programa, vas a saber escucharlas.
-      </p>
-      <div class="hero-cta-group">
-        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Quiero+reservar+mi+lugar+en+el+Programa+Sentir+desde+Adentro.+%C2%BFMe+pas%C3%A1s+los+datos+para+hacer+el+pago%3F"
-          class="btn-primary" target="_blank" rel="noopener noreferrer">Reservar mi lugar</a>
-        <a href="#programa" class="btn-ghost">Ver el programa</a>
-      </div>
-      <p style="font-size: 0.78rem; color: var(--gris); margin-top: 1rem; letter-spacing: 0.05em;">El taller arranca al
-        completarse el cupo mínimo. Te avisaremos cuándo</p>
+      <p class="hero-note">El taller arranca al completarse el cupo mínimo. Te avisaremos cuándo</p>
     </div>
+    <div class="hero-art"><img src="hero_abstract_violeta.jpg" alt="Sentir desde Adentro - Arte Abstracto"></div>
+  </div>
+</section>
 
-    <div class="hero-right">
-      <div class="hero-photo">
-        <img src="hero_abstract_updated.png" alt="Sentir desde Adentro - Arte Abstracto" class="hero-photo-img">
-        <!-- Fallback gradient if no photo -->
-        <div
-          style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%, rgba(158,74,46,0.4) 0%, rgba(92,26,40,0.3) 40%, transparent 70%);z-index:1;">
-        </div>
-      </div>
-      <!-- Mandala decoration -->
-      <svg class="hero-mandala" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="150" r="140" fill="none" stroke="#BF8C2C" stroke-width="0.5" />
-        <circle cx="150" cy="150" r="110" fill="none" stroke="#BF8C2C" stroke-width="0.5" />
-        <circle cx="150" cy="150" r="80" fill="none" stroke="#BF8C2C" stroke-width="0.5" />
-        <circle cx="150" cy="150" r="50" fill="none" stroke="#BF8C2C" stroke-width="0.8" />
-        <circle cx="150" cy="150" r="20" fill="none" stroke="#BF8C2C" stroke-width="1" />
-        <line x1="150" y1="10" x2="150" y2="290" stroke="#BF8C2C" stroke-width="0.3" />
-        <line x1="10" y1="150" x2="290" y2="150" stroke="#BF8C2C" stroke-width="0.3" />
-        <line x1="50" y1="50" x2="250" y2="250" stroke="#BF8C2C" stroke-width="0.3" />
-        <line x1="250" y1="50" x2="50" y2="250" stroke="#BF8C2C" stroke-width="0.3" />
-        <line x1="150" y1="10" x2="50" y2="250" stroke="#BF8C2C" stroke-width="0.2" />
-        <line x1="150" y1="10" x2="250" y2="250" stroke="#BF8C2C" stroke-width="0.2" />
-      </svg>
+<!-- EL PUNTO DE PARTIDA -->
+<section id="sobre">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">El punto de partida</div>
+      <h2>Vivimos de afuera hacia adentro. Es hora de <em>invertir</em> esa dirección.</h2>
     </div>
-  </section>
-
-  <!-- SOBRE EL PROGRAMA -->
-  <section id="sobre">
-    <div class="about-left reveal">
-      <div class="section-label">El punto de partida</div>
-      <h2>Vivimos de afuera<br>hacia adentro.<br>Es hora de <em>invertir</em><br>esa dirección.</h2>
-      <div class="about-accent"></div>
-    </div>
-    <div class="about-right reveal">
-      <p>
-        Durante años, el sistema nos enseñó a funcionar. A producir, a rendir, a encajar.
-        Y en ese proceso, aprendimos a ignorar lo que sentíamos — o peor,
-        a creer que sentir mucho era una debilidad.
-      </p>
-      <p>
-        <strong>Sentir desde Adentro es un programa de 4 encuentros semanales</strong> donde vas a recorrer
-        el camino de regreso: de las emociones como problema, a las emociones como brújula.
-        No desde la teoría. Desde el cuerpo.
-      </p>
-      <p>
-        Es para cualquier persona que esté lista para dejar de controlar sus emociones
-        y empezar a escucharlas. No importa si venís con formación o sin ella.
-        Lo que importa es que estés dispuesta/o a estar presente.
-      </p>
-      <div class="about-tags">
+    <div>
+      <p>Durante años, el sistema nos enseñó a funcionar. A producir, a rendir, a encajar. Y en ese proceso, aprendimos a ignorar lo que sentíamos — o peor, a creer que sentir mucho era una debilidad.</p>
+      <p><strong>Sentir desde Adentro es un programa de 4 encuentros semanales</strong> donde vas a recorrer el camino de regreso: de las emociones como problema, a las emociones como brújula. No desde la teoría. Desde el cuerpo.</p>
+      <p>Es para cualquier persona que esté lista para dejar de controlar sus emociones y empezar a escucharlas. No importa si venís con formación o sin ella. Lo que importa es que estés dispuesta/o a estar presente.</p>
+      <div class="tags">
         <span class="tag">60 min por encuentro</span>
         <span class="tag">4 encuentros</span>
         <span class="tag">Práctico</span>
         <span class="tag">100% Online</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ANI BIO -->
-  <section id="ani">
-    <div class="ani-photo-wrap reveal">
-      <div class="ani-photo-frame">
-        <img src="ani_profile_updated2.png" alt="Ani Franza M." style="object-position: center;">
-      </div>
-    </div>
-
-    <div class="ani-content reveal">
-      <div class="section-label">Quién está detrás</div>
-      <h2 style="font-size: 1.8rem; color: var(--carbon); margin-bottom: 1rem;">Ani Franza M.</h2>
-
+<!-- QUIÉN SOY -->
+<section class="about" id="ani">
+  <div class="wrap about-grid">
+    <img class="about-photo" src="ani_profile_lila.jpg" alt="Ani Franza M.">
+    <div>
+      <div class="kicker">Quién está detrás</div>
+      <h2>Ani Franza M.</h2>
       <p><strong>Soy Ani. Y yo también fui la diferente.</strong></p>
-
-      <p>
-        Durante años busqué comprender lo que me pasaba internamente en contextos que priorizaban lo material
-        por sobre lo integral. Ese recorrido me llevó a descubrir que las emociones no eran el problema,
-        sino una puerta de entrada para revisar creencias, paradigmas, historia personal y la relación entre mente,
-        cuerpo y dimensión interna álmica / espiritual.
-      </p>
-
-      <p>
-        Hoy acompaño procesos desde una mirada integradora, donde lo emocional, lo mental, lo físico y lo espiritual
-        se comprenden como partes de un mismo proceso, permitiendo que la comprensión interna se traduzca en cambios
-        concretos.
-      </p>
-
-      <div class="quote-box">
-        <blockquote>"Soy sólo un alma humana, tocando a otra alma humana."</blockquote>
-      </div>
-
-      <p>
-        Este enfoque se nutre de formación en Coaching Ontológico Profesional, Inteligencia Emocional y
-        Biodescodificación emocional,
-        junto con estudios en Administración de Empresas de Logística y un recorrido personal que integra psicología,
-        constelaciones familiares, meditación Vipassana y otras prácticas de autoconocimiento.
-      </p>
-
-      <p><strong>Cuando algo se ordena por dentro, también cambia y se re-ordena la forma de vivirlo por fuera.</strong>
-      </p>
-
-      <div class="logos-formacion reveal"
-        style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(122, 106, 96, 0.2);">
-        <p
-          style="font-size: 0.8rem; color: var(--gris); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
-          Formación y Avales</p>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; align-items: start;">
-          <div style="text-align: center; max-width: 130px;">
-            <img src="LOGO_ECOCOACHING.png" alt="Eco Coaching"
-              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Coaching Ontológico
-              Profesional y<br>Diplomatura en Inteligencia Emocional</p>
-          </div>
-          <div style="text-align: center; max-width: 130px;">
-            <img src="logo_CuerpoMenteAlma.png" alt="Grupo Cuerpo Mente Alma"
-              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Diplomado
-              Internacional en Medicina<br>Cuerpo Mente Alma y Biodescodificación</p>
-          </div>
-          <div style="text-align: center; max-width: 130px;">
-            <img src="logo_ColegioUniversitarioIES.jpg" alt="IES Siglo 21"
-              style="max-height: 35px; max-width: 100%; border-radius: 4px;">
-            <p style="font-size: 0.65rem; color: var(--gris); margin-top: 0.5rem; line-height: 1.3;">Administración de
-              Empresas<br>de Logística</p>
-          </div>
-        </div>
-      </div>
+      <p>Durante años busqué comprender lo que me pasaba internamente en contextos que priorizaban lo material por sobre lo integral. Ese recorrido me llevó a descubrir que las emociones no eran el problema, sino una puerta de entrada para revisar creencias, paradigmas, historia personal y la relación entre mente, cuerpo y dimensión interna álmica / espiritual.</p>
+      <p>Hoy acompaño procesos desde una mirada integradora, donde lo emocional, lo mental, lo físico y lo espiritual se comprenden como partes de un mismo proceso, permitiendo que la comprensión interna se traduzca en cambios concretos.</p>
+      <blockquote class="about-quote">"Soy sólo un alma humana, tocando a otra alma humana."</blockquote>
+      <p><strong>Cuando algo se ordena por dentro, también cambia y se re-ordena la forma de vivirlo por fuera.</strong></p>
+      <p class="about-link"><a href="https://anifranzam.github.io">Conocé más sobre mí y mis otras propuestas →</a></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- QUOTE STRIP -->
-  <div class="quote-strip">
-    <blockquote>
-      "No aprendiste técnicas. Recordaste quién sos."
-    </blockquote>
+<!-- FRASE -->
+<section class="statement">
+  <div class="wrap">
+    <blockquote>"No aprendiste técnicas. Recordaste quién sos."</blockquote>
     <cite>— El compromiso de cada encuentro</cite>
   </div>
+</section>
 
-  <!-- PROGRAMA -->
-  <section id="programa">
-    <div class="program-header reveal">
-      <div>
-        <div class="section-label" style="color:var(--dorado)"><span
-            style="display:block;width:32px;height:1px;background:var(--dorado);opacity:0.5;"></span>Los 4 encuentros
-        </div>
-        <h2>Un recorrido<br><em>descubierto</em></h2>
-      </div>
-      <p class="program-header-desc">
-        Vas a explorar tus emociones como brújula, aprender a nombrarlas, descubrir la diferencia entre suprimir y
-        regular, e integrar todo eso en tus vínculos. Cada encuentro construye sobre el anterior. No es teoría — es
-        experiencia encarnada.
-      </p>
+<!-- EL PROGRAMA -->
+<section id="programa">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Los 4 encuentros</div>
+      <h2>Un recorrido <em>descubierto</em></h2>
+      <p>Vas a explorar tus emociones como brújula, aprender a nombrarlas, descubrir la diferencia entre suprimir y regular, e integrar todo eso en tus vínculos. Cada encuentro construye sobre el anterior. No es teoría — es experiencia encarnada.</p>
     </div>
-  </section>
-
-  <!-- PARA QUIEN -->
-  <section id="para-quien">
-    <div class="section-label reveal">Para quién es esto</div>
-    <h2 class="reveal">Para quien decide dejarse de ver y empezar a <em>habitarse</em></h2>
-
-    <div class="who-grid">
-      <div class="who-card reveal">
-        <span class="who-icon">🌱</span>
-        <h3>La persona que siente<br>que algo no encaja</h3>
-        <p>Vivís funcionando pero no sintiéndote del todo vos. Sabés que algo puede ser diferente aunque no sepas bien
-          qué. Este es el camino para dejar de "sobrellevar" y empezar a ser auténtica con tu sentir.</p>
-      </div>
-      <div class="who-card reveal">
-        <span class="who-icon">🔥</span>
-        <h3>La persona que<br>evita o explota</h3>
-        <p>O tapás lo que sentís hasta que ya no podés, o reaccionás de formas que después no reconocés. Buscamos un
-          compromiso real con tu proceso, para pasar de la reacción a Aprender A Escucharte.</p>
-      </div>
-      <div class="who-card reveal">
-        <span class="who-icon">🧭</span>
-        <h3>Quien acompaña<br>a otros</h3>
-        <p>Trabajás con personas y sabés que tu mundo interno afecta tu trabajo. Buscamos coherencia para que tu
-          autenticidad sea tu mayor herramienta. Este espacio es para protagonistas, no para curiosos.</p>
-      </div>
-    </div>
-
-    <div class="not-for reveal">
-      <h4>Esto no es para vos si...</h4>
-      <p>Buscás recetas, fórmulas o atajos. Acá no hay nada que hacer "bien". Hay algo que sentir, nombrar y soltar. Si
-        preferís saber sin experimentar, quizás este no es el momento. Y está bien — también es información.</p>
-    </div>
-  </section>
-
-  <!-- EXPERIENCIA / PILLARES -->
-  <section id="experiencia">
-    <h2 class="reveal">¿Cómo es la <em>experiencia</em>?</h2>
-
-    <div class="exp-pillars">
-      <div class="pillar reveal">
-        <div class="pillar-number">01</div>
-        <h3>Vivencial primero</h3>
-        <p>No se explica y después se hace. Se hace y después se entiende. El cuerpo aprende antes que la mente.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="pillar-number">02</div>
-        <h3>Ciencia + tradición</h3>
-        <p>Neurociencia real combinada con Inteligencia Emocional, Coaching, datos estadísticos. Sin contradecirse —
-          complementándose.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="pillar-number">03</div>
-        <h3>Sin positivismo vacío</h3>
-        <p>Acá no hay "todo pasa por algo" ni "lo positivo atrae lo positivo". Hay honestidad, herramientas concretas y
-          presencia real.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="pillar-number">04</div>
-        <h3>Música + silencio</h3>
-        <p>Cada actividad tiene su música sugerida. Cada silencio, su propósito. Cada espacio es parte del proceso.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section id="testimonios">
-    <div class="testi-header reveal">
-      <div class="section-label" style="justify-content:center;color:var(--dorado);"><span
-          style="width:32px;height:1px;background:var(--dorado);opacity:0.5;display:block;"></span>Voces que resonaron
-      </div>
-      <h2>Testimonios</h2>
-    </div>
-
-    <div class="testi-feed reveal">
-      <div class="testi-item">
-        <img src="MateoRissoPatron_sin fecha.png" alt="Testimonio Mateo Risso Patron">
-      </div>
-      <div class="testi-item">
-        <img src="AnaMaria_sin fecha.png" alt="Testimonio Ana maria">
-      </div>
-      <div class="testi-item">
-        <img src="rociovanessa_sin fecha.png" alt="Testimonio ROCIOVANESA">
-      </div>
-      <div class="testi-item">
-        <img src="maria_sin fecha.png" alt="Testimonio Maria">
-      </div>
-      <div class="testi-item">
-        <img src="gabriela susana_sin fecha.png" alt="Testimonio Gabriela Susana">
-      </div>
-      <div class="testi-item">
-        <img src="sergiogarzon_sin fecha.png" alt="Testimonio Sergio Garzón">
-      </div>
-      <div class="testi-item">
-        <img src="flavia garnica_sin fecha.jpg" alt="Testimonio Flavia Garnica" class="no-zoom">
-        <div class="testi-name-simple">Flavia Garnica</div>
-      </div>
-      <div class="testi-item">
-        <img src="Erika Baier_sin fecha.jpg" alt="Testimonio Erica Baier" class="no-zoom">
-        <div class="testi-name-simple">Erika Baier</div>
-      </div>
-      <div class="testi-item">
-        <img src="Romina_sin fecha.jpg" alt="Testimonio Romina" class="no-zoom">
-        <div class="testi-name-simple">Romina</div>
-      </div>
-      <div class="testi-item">
-        <img src="daniel_sin fecha.png" alt="Testimonio Daniel">
-      </div>
-    </div>
-  </section>
-
-  <!-- INSCRIPCION -->
-  <section id="inscripcion">
-    <div class="section-label">Preventa · Cupos limitados</div>
-    <h2>Reservá tu lugar<br><em>antes de que se llene.</em></h2>
-    <p class="desc">
-      El grupo arranca cuando se completa el cupo. Tu pago reserva tu lugar — te confirmamos la fecha cuando estemos listos para empezar.
-    </p>
-
-    <div class="pricing-cards">
-      <!-- OPCIÓN GRUPAL (PROTAGONISTA) -->
-      <div class="price-card reveal"
-        style="border: 2px solid var(--dorado); background: rgba(58, 31, 15, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.4);">
-        <div class="badge-lanzamiento"
-          style="background: var(--dorado); color: var(--carbon); font-weight: 700; display: none;">⭐
-          RECOMENDADO · LANZAMIENTO</div>
-        <div class="price-label">Programa de 4 encuentros semanales</div>
-        <div class="price-name" style="color: var(--dorado2); font-size: 1.8rem; margin-bottom: 0.5rem;">Programa
-          Completo</div>
-        <div class="price-desc">Espacio de comunidad, práctica y co-regulación emocional profunda.</div>
-
-        <div class="price-row">
-          <span class="label" style="font-size: 0.8rem;">USD · USDT · USDC</span>
-          <span class="value" style="font-size: 2.2rem; color: var(--dorado);">45</span>
-        </div>
-
-        <div class="price-date-box" style="background: rgba(191,140,44,0.05);">
-          <div class="date-info" style="font-size: 1rem;"> 🗓️ La fecha se confirma al completarse el grupo · Cupos
-            limitados
-          </div>
-        </div>
-
-        <ul class="price-includes">
-          <li>4 encuentros interactivos en vivo</li>
-          <li>Material de apoyo</li>
-          <li>Acceso a comunidad de práctica</li>
-          <li>Soporte de Ani durante el proceso</li>
-        </ul>
-        <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Quiero+reservar+mi+lugar+en+el+Programa+Sentir+desde+Adentro.+%C2%BFMe+pas%C3%A1s+los+datos+para+hacer+el+pago%3F"
-          class="price-btn"
-          style="background: var(--dorado); color: var(--carbon); font-weight: 700; box-shadow: 0 4px 15px rgba(191,140,44,0.3);"
-          target="_blank" rel="noopener noreferrer">Reservar mi lugar</a>
-      </div>
-
-    </div>
-
-    <p class="inscripcion-note" style="margin-top: 1.5rem;">
-      ¿Preferís un acompañamiento 1:1 personalizado?
-      <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Me+interesa+el+acompa%C3%B1amiento+1%3A1+personalizado.+%C2%BFMe+cont%C3%A1s+m%C3%A1s%3F"
-        target="_blank" rel="noopener noreferrer"
-        style="color: var(--dorado); text-decoration: none; border-bottom: 1px solid rgba(191,140,44,0.4);">Escribime por WhatsApp</a>
-    </p>
-
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="section-label reveal">Preguntas frecuentes</div>
-    <h2 class="reveal">Lo que <em>solés</em><br>querer saber</h2>
-
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Necesito tener experiencia previa en terapia o desarrollo personal?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">No. El programa está diseñado para cualquier persona que quiera ser más auténtica,
-          independientemente de su formación. Si tenés experiencia, vas a encontrar una perspectiva diferente. Si no la
-          tenés, vas a encontrar un punto de partida sólido.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Es online o presencial?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">El programa es 100% online. Podés sumarte desde cualquier parte del mundo.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Cuándo son los encuentros?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">Los encuentros son semanales, una vez por semana durante 4 semanas. El día, horario y fecha
-          de inicio se confirman al completarse el grupo.
-        </div>
-      </div>
-      <!-- texto oculto -->
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Hay grabación de los encuentros?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">Estos encuentros están diseñados como experiencias en vivo, donde el proceso se construye en
-          el momento. La profundidad del trabajo emocional surge de la participación activa, la vivencia directa y las
-          dinámicas grupales que forman parte del espacio.
-          <br>
-          Sólo para situaciones excepcionales, cada clase queda grabada con acceso de 48 horas.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿El programa tiene seguimiento después?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">En el formato 1:1 sí, hay seguimiento entre sesiones. En el grupal, el cierre incluye
-          herramientas de práctica autónoma y comunidad de apoyo.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Cómo confirmo mi lugar?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">Escribime por WhatsApp haciendo clic en el botón de esta página. Te paso los datos de pago —
-          podés abonar en pesos argentinos por transferencia, o en dólares (USD) o en cripto (USDT / USDC). Una vez
-          confirmado el pago, te sumo al grupo y coordinamos todo lo que sigue.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Esto reemplaza una terapia?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">No. Sentir desde Adentro es un programa de desarrollo personal enfocado en Aprender A
-          Escucharte — no es
-          psicoterapia ni reemplaza ningún proceso terapéutico que estés haciendo. Puede complementarlo muy bien, pero
-          no lo reemplaza.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Leí toda la página y me quedan dudas, qué hago?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">Escribime por WhatsApp haciendo clic en el botón de esta página, y con gusto te responderé.
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACTO FINAL -->
-  <section id="contacto">
-    <div class="contact-glow"></div>
-    <h2 class="reveal">¿Algo<br><em>resonó</em>?</h2>
-    <p class="reveal">
-      No necesitás tener todo claro para escribirme.<br>
-      Si algo de lo que leíste te movió por dentro — eso ya es suficiente.
-    </p>
-
-    <div class="contact-links reveal">
-      <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Le%C3%AD+tu+p%C3%A1gina+y+algo+reson%C3%B3.+%C2%BFPodemos+hablar+antes+de+que+decida%3F"
-        class="contact-link wa" target="_blank" rel="noopener noreferrer">
-        💬 Escribime por WhatsApp
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Ani Franza M. <span>· Sentir desde Adentro</span></div>
-    <div class="footer-copy">
-      © 2026 · Córdoba, Argentina · @anifranzam<br>
-      <div style="margin-top: 12px; font-size: 0.9rem;">
-        <a href="terminos.html" style="color: inherit; text-decoration: none; opacity: 0.6; transition: opacity 0.3s;"
-          onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Términos y Condiciones</a>
-        <span style="opacity: 0.3; margin: 0 10px;">|</span>
-        <a href="privacidad.html" style="color: inherit; text-decoration: none; opacity: 0.6; transition: opacity 0.3s;"
-          onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">Políticas de Privacidad</a>
-      </div>
-    </div>
-    <div class="footer-socials">
-      <a href="https://api.whatsapp.com/send/?phone=5493513508205" class="wa" target="_blank" rel="noopener noreferrer" title="WhatsApp"
-        data-tooltip="WhatsApp">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.516.893 3.003 1.337 4.769 1.338 5.487 0 9.953-4.466 9.956-9.956.002-2.661-1.033-5.161-2.91-7.04s-4.379-2.912-7.042-2.913c-5.489 0-9.954 4.465-9.958 9.956-.001 1.831.501 3.613 1.45 5.174l-1.092 3.993 4.1-.752zm11.454-7.466c-.309-.155-1.833-.905-2.113-1.006-.28-.1-.485-.155-.688.155-.205.31-.79.991-.97 1.192-.18.2-.361.226-.67.071-.31-.155-1.306-.481-2.486-1.534-.919-.819-1.54-1.832-1.72-2.143-.18-.309-.018-.477.137-.63.139-.138.31-.36.465-.541.155-.181.205-.31.309-.516.105-.206.052-.387-.025-.541-.077-.155-.688-1.653-.943-2.268-.248-.598-.501-.517-.688-.527l-.587-.01c-.205 0-.541.077-.825.387s-1.084 1.057-1.084 2.58c0 1.522 1.109 2.993 1.264 3.2 1.55 2.043 3.324 3.12 5.068 3.86 1.745.74 2.872.936 3.911.78l1.706-.25c.31-.045.825-.335 1.056-.993.23-.655.23-1.21.161-1.328-.1-.137-.417-.301-.842-.491z" />
-        </svg>
-      </a>
-      <a href="https://www.instagram.com/anifranzam" class="ig" target="_blank" rel="noopener noreferrer" title="Instagram"
-        data-tooltip="Instagram">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.475 1.382.897.422.422.68.822.897 1.382.164.422.359 1.057.412 2.227.059 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.475.96-.897 1.382-.422.422-.822.68-1.382.897-.422.164-1.057.359-2.227.412-1.266.059-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.475-1.382-.897-.422-.422-.68-.822-.897-1.382-.164-.422-.359-1.057-.412-2.227-.059-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.475-.96.897-1.382.422-.422.822-.68 1.382-.897.422-.164 1.057-.359 2.227-.412 1.266-.059 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.057-2.15.26-2.914.557-.79.307-1.459.718-2.124 1.383-.665.665-1.076 1.334-1.383 2.124-.297.764-.501 1.637-.557 2.914-.059 1.28-.073 1.688-.073 4.947s.014 3.667.072 4.947c.057 1.277.26 2.15.557 2.914.307.79.718 1.459 1.383 2.124.665.665 1.334 1.076 2.124 1.383.764.297 1.637.501 2.914.557 1.28.059 1.688.073 4.947.073s3.667-.014 4.947-.072c1.277-.057 2.15-.26 2.914-.557.79-.307 1.459-.718 2.124-1.383.665-.665 1.076-1.334 1.383-2.124.297-.764.501-1.637.557-2.914.059-1.28.073-1.688.073-4.947s-.014-3.667-.072-4.947c-.057-1.277-.26-2.15-.557-2.914-.307-.79-.718-1.459-1.383-2.124-.665-.665-1.334-1.076-2.124-1.383-.764-.297-1.637-.501-2.914-.557-1.28-.059-1.688-.073-4.947-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44-1.44-.645-1.44-1.44.645-1.44 1.441-1.44z" />
-        </svg>
-      </a>
-      <a href="https://www.youtube.com/@anifranzam" class="yt" target="_blank" rel="noopener noreferrer" title="YouTube" data-tooltip="YouTube">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z" />
-        </svg>
-      </a>
-      <a href="https://linktr.ee/anifranzam" class="lt" target="_blank" rel="noopener noreferrer" title="Linktree" data-tooltip="Linktree">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M13.511 19.071l4.032-4.103h-2.502s.534-4.522.617-5.023c.083-.5.183-1.017.183-1.017l4.004-4.004-.701-.701-4.12 4.12s-.217 2.37-.3 3.237c-.084.868-.134 1.418-.134 1.418H12.72l.017-10.75h-.934l-.017 10.75H9.923s-.05-1.05-.133-1.918c-.083-.867-.3-3.237-.3-3.237L5.37 3.523l-.701.701 4.004 4.004s.1 1.017.183 1.017c.083.5.617 5.023.617 5.023H6.971l4.032 4.103V22.5h2.508v-3.429z" />
-        </svg>
-      </a>
-    </div>
-  </footer>
-
-  <!-- LIGHTBOX STRUCTURE - Reforzada -->
-  <div id="testiLightbox">
-    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
-    <div class="lightbox-scroll-area" onclick="closeLightbox()">
-      <div class="lightbox-content" onclick="event.stopPropagation()">
-        <img id="lightboxImg" src="" alt="Testimonio ampliado">
-      </div>
-    </div>
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
   </div>
+</section>
 
-  <script>
-    function openLightbox(src) {
-      const lightbox = document.getElementById('testiLightbox');
-      const img = document.getElementById('lightboxImg');
-      img.src = src;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Stop scrolling
-    }
+<!-- PARA QUIÉN -->
+<section class="alt" id="para-quien">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Para quién es esto</div>
+      <h2>Para quien decide dejarse de ver y empezar a <em>habitarse</em></h2>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="card-icon">🌱</div><h3>La persona que siente que algo no encaja</h3><p>Vivís funcionando pero no sintiéndote del todo vos. Sabés que algo puede ser diferente aunque no sepas bien qué. Este es el camino para dejar de "sobrellevar" y empezar a ser auténtica con tu sentir.</p></article>
+      <article class="card"><div class="card-icon">🔥</div><h3>La persona que evita o explota</h3><p>O tapás lo que sentís hasta que ya no podés, o reaccionás de formas que después no reconocés. Buscamos un compromiso real con tu proceso, para pasar de la reacción a Aprender A Escucharte.</p></article>
+      <article class="card"><div class="card-icon">🧭</div><h3>Quien acompaña a otros</h3><p>Trabajás con personas y sabés que tu mundo interno afecta tu trabajo. Buscamos coherencia para que tu autenticidad sea tu mayor herramienta. Este espacio es para protagonistas, no para curiosos.</p></article>
+    </div>
+    <div class="not-for">
+      <h4>Esto no es para vos si...</h4>
+      <p>Buscás recetas, fórmulas o atajos. Acá no hay nada que hacer "bien". Hay algo que sentir, nombrar y soltar. Si preferís saber sin experimentar, quizás este no es el momento. Y está bien — también es información.</p>
+    </div>
+  </div>
+</section>
 
-    function closeLightbox() {
-      const lightbox = document.getElementById('testiLightbox');
-      const img = document.getElementById('lightboxImg');
-      lightbox.classList.remove('active');
-      img.classList.remove('zoomed'); // Reset zoom on close
-      document.body.style.overflow = ''; // Restore scrolling
-    }
-
-    // Toggle zoom logic for desktop/mouse users
-    document.getElementById('lightboxImg').addEventListener('click', function (e) {
-      e.stopPropagation();
-      this.classList.toggle('zoomed');
-      // Reset scroll position on toggle
-      if (!this.classList.contains('zoomed')) {
-        document.getElementById('testiLightbox').scrollTo({ left: 0, behavior: 'smooth' });
-      }
-    });
-
-    // Función para el desplazamiento lateral con flechas
-    function scrollLightbox(amount) {
-      document.getElementById('testiLightbox').scrollBy({ left: amount, behavior: 'smooth' });
-    }
-
-    // Attach click events for all screens - zoomable images only
-    document.querySelectorAll('.testi-item img:not(.no-zoom)').forEach(img => {
-      img.addEventListener('click', () => {
-        openLightbox(img.src);
-      });
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    // ── NAV SCROLL ──────────────────────────────────
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    // ── REVEAL ON SCROLL ────────────────────────────
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, (entry.target.dataset.delay || 0));
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.dataset.delay = (i % 4) * 80;
-      observer.observe(el);
-    });
-
-    // ── ABOUT ACCENT LINE ───────────────────────────
-    const accentObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'transform 0.8s ease 0.3s';
-          entry.target.style.transform = 'scaleX(1)';
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.about-accent').forEach(el => {
-      el.style.transform = 'scaleX(0)';
-      el.style.transformOrigin = 'left';
-      accentObs.observe(el);
-    });
-
-    // ── FAQ TOGGLE ──────────────────────────────────
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-      btn.querySelector('.faq-icon').textContent = item.classList.contains('open') ? '−' : '+';
-    }
-
-    // Reset icons on close
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.faq-icon').forEach(icon => {
-          const item = icon.closest('.faq-item');
-          icon.textContent = item.classList.contains('open') ? '−' : '+';
-        });
-      });
-    });
-
-    // ── HAMBURGER MENU ──────────────────────────────
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-
-    function openMobileNav() {
-      hamburgerBtn.classList.add('open');
-      mobileNav.classList.add('open');
-      hamburgerBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileNav() {
-      hamburgerBtn.classList.remove('open');
-      mobileNav.classList.remove('open');
-      hamburgerBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    hamburgerBtn.addEventListener('click', () => {
-      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
-    });
-
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', closeMobileNav);
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMobileNav();
-    });
-
-  </script>
+<!-- LA EXPERIENCIA -->
+<section id="experiencia">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">La experiencia</div>
+      <h2>¿Cómo es la <em>experiencia</em>?</h2>
+    </div>
+    <div class="pillars">
+      <article class="card"><div class="number">01</div><h3>Vivencial primero</h3><p>No se explica y después se hace. Se hace y después se entiende. El cuerpo aprende antes que la mente.</p></article>
+      <article class="card"><div class="number">02</div><h3>Ciencia + tradición</h3><p>Neurociencia real combinada con Inteligencia Emocional, Coaching, datos estadísticos. Sin contradecirse — complementándose.</p></article>
+      <article class="card"><div class="number">03</div><h3>Sin positivismo vacío</h3><p>Acá no hay "todo pasa por algo" ni "lo positivo atrae lo positivo". Hay honestidad, herramientas concretas y presencia real.</p></article>
+      <article class="card"><div class="number">04</div><h3>Música + silencio</h3><p>Cada actividad tiene su música sugerida. Cada silencio, su propósito. Cada espacio es parte del proceso.</p></article>
+    </div>
+  </div>
+</section>
 
 
-  <!-- BOTON WHATSAPP -->
-  <a href="https://wa.me/5493513508205?text=Hola+Ani%21+Vengo+desde+tu+p%C3%A1gina+web."
-    class="wa-float" target="_blank" rel="noopener noreferrer">
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
-      <path
-        d="M20.52 3.48A11.82 11.82 0 0012.05 0C5.41 0 .04 5.37.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.9 11.9 0 0012.05 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.53-8.52z" />
-    </svg>
-  </a>
+<!-- INSCRIPCIÓN -->
+<section class="alt" id="inscripcion">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="kicker">Preventa · Cupos limitados</div>
+      <h2>Reservá tu lugar <em>antes de que se llene.</em></h2>
+      <p>El grupo arranca cuando se completa el cupo. Tu pago reserva tu lugar — te confirmamos la fecha cuando estemos listos para empezar.</p>
+    </div>
+    <div class="offer">
+      <div class="number">Programa de 4 encuentros semanales</div>
+      <h3>Programa Completo</h3>
+      <p>Espacio de comunidad, práctica y co-regulación emocional profunda.</p>
+      <div class="price">USD / USDT / USDC 45</div>
+      <div class="date-box">🗓️ La fecha se confirma al completarse el grupo · Cupos limitados</div>
+      <ul class="includes">
+        <li>4 encuentros interactivos en vivo</li>
+        <li>Material de apoyo</li>
+        <li>Acceso a comunidad de práctica</li>
+        <li>Soporte de Ani durante el proceso</li>
+      </ul>
+      <a class="btn" href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Quiero+reservar+mi+lugar+en+el+Programa+Sentir+desde+Adentro.+%C2%BFMe+pas%C3%A1s+los+datos+para+hacer+el+pago%3F" target="_blank" rel="noopener noreferrer">Reservar mi lugar</a>
+    </div>
+    <p class="offer-note">¿Preferís un acompañamiento 1:1 personalizado? <a href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Vengo+de+la+p%C3%A1gina+de+Sentir+desde+Adentro.+Me+interesa+el+acompa%C3%B1amiento+1%3A1+personalizado.+%C2%BFMe+cont%C3%A1s+m%C3%A1s%3F" target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a></p>
+  </div>
+</section>
 
-  <style>
-    .wa-float {
-      position: fixed;
-      bottom: 22px;
-      right: 20px;
-      width: 54px;
-      height: 54px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-      z-index: 999;
-      transition: 0.3s;
-    }
+<!-- PREGUNTAS FRECUENTES -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="kicker">Preguntas frecuentes</div>
+      <h2>Lo que <em>solés</em> querer saber</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Necesito tener experiencia previa en terapia o desarrollo personal?</summary><p>No. El programa está diseñado para cualquier persona que quiera ser más auténtica, independientemente de su formación. Si tenés experiencia, vas a encontrar una perspectiva diferente. Si no la tenés, vas a encontrar un punto de partida sólido.</p></details>
+      <details><summary>¿Es online o presencial?</summary><p>El programa es 100% online. Podés sumarte desde cualquier parte del mundo.</p></details>
+      <details><summary>¿Cuándo son los encuentros?</summary><p>Los encuentros son semanales, una vez por semana durante 4 semanas. El día, horario y fecha de inicio se confirman al completarse el grupo.</p></details>
+      <details><summary>¿Hay grabación de los encuentros?</summary><p>Estos encuentros están diseñados como experiencias en vivo, donde el proceso se construye en el momento. La profundidad del trabajo emocional surge de la participación activa, la vivencia directa y las dinámicas grupales que forman parte del espacio.<br>Sólo para situaciones excepcionales, cada clase queda grabada con acceso de 48 horas.</p></details>
+      <details><summary>¿El programa tiene seguimiento después?</summary><p>En el formato 1:1 sí, hay seguimiento entre sesiones. En el grupal, el cierre incluye herramientas de práctica autónoma y comunidad de apoyo.</p></details>
+      <details><summary>¿Cómo confirmo mi lugar?</summary><p>Escribime por WhatsApp haciendo clic en el botón de esta página. Te paso los datos de pago — podés abonar en pesos argentinos por transferencia, o en dólares (USD) o en cripto (USDT / USDC). Una vez confirmado el pago, te sumo al grupo y coordinamos todo lo que sigue.</p></details>
+      <details><summary>¿Esto reemplaza una terapia?</summary><p>No. Sentir desde Adentro es un programa de desarrollo personal enfocado en Aprender A Escucharte — no es psicoterapia ni reemplaza ningún proceso terapéutico que estés haciendo. Puede complementarlo muy bien, pero no lo reemplaza.</p></details>
+      <details><summary>Leí toda la página y me quedan dudas, ¿qué hago?</summary><p>Escribime por WhatsApp haciendo clic en el botón de esta página, y con gusto te responderé.</p></details>
+    </div>
+  </div>
+</section>
 
-    .wa-float:hover {
-      transform: scale(1.08);
-    }
-  </style>
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <h2>¿Algo <em>resonó</em>?</h2>
+    <p>No necesitás tener todo claro para escribirme.<br>Si algo de lo que leíste te movió por dentro — eso ya es suficiente.</p>
+    <a class="btn" href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Le%C3%AD+la+p%C3%A1gina+de+Sentir+desde+Adentro+y+algo+reson%C3%B3.+%C2%BFPodemos+hablar+antes+de+que+decida%3F" target="_blank" rel="noopener noreferrer">Escribime por WhatsApp</a>
+  </div>
+</section>
 
+<footer class="site-footer"><div class="wrap foot-grid"><div class="foot-brand"><a href="https://anifranzam.github.io" title="Ir a la página principal de Ani Franza M."><b>Ani Franza M.</b></a> <span>· Sentir desde Adentro</span></div><div class="foot-info"><p>© 2026 · Córdoba, Argentina · @anifranzam</p><p class="foot-legal"><a href="terminos.html">Términos y Condiciones</a><span>|</span><a href="privacidad.html">Políticas de Privacidad</a></p></div><div class="foot-social"><a class="social wa" href="https://api.whatsapp.com/send/?phone=5493513508205&text=Hola+Ani%21+Vengo+desde+la+p%C3%A1gina+de+Sentir+desde+Adentro." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.6c.3-.6.9-.6 1.1 0l.6 1.4c.1.3 0 .6-.2.8l-.5.5a5.6 5.6 0 0 0 2.7 2.7l.5-.5c.2-.2.5-.3.8-.2l1.4.6c.6.2.6.8 0 1.1-.6.4-1.4.6-2.2.4A7 7 0 0 1 8.6 10.8c-.2-.8 0-1.6.4-2.2z" fill="currentColor" stroke="none"/></svg></a><a class="social ig" href="https://www.instagram.com/anifranzam" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg></a><a class="social yt" href="https://www.youtube.com/@anifranzam" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></a><a class="social lt" href="https://linktr.ee/anifranzam" target="_blank" rel="noopener noreferrer" aria-label="Linktree" data-label="Linktree"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5V13M12 2.5v7M4.5 6.5 12 13l7.5-6.5M3.5 10h17M8 17h8"/></svg></a></div></div></footer>
 
+<a class="wa-float" href="https://wa.me/5493513508205?text=Hola+Ani%21+Vengo+desde+la+p%C3%A1gina+de+Sentir+desde+Adentro." target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M20.52 3.48A11.82 11.82 0 0012.05 0C5.41 0 .04 5.37.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.9 11.9 0 0012.05 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.53-8.52z"/></svg>
+</a>
+
+<script>(function(){var h=document.querySelector("header"),b=h&&h.querySelector(".menu-btn");if(!b)return;function c(){h.classList.remove("open");b.setAttribute("aria-expanded","false")}b.addEventListener("click",function(e){e.stopPropagation();var o=h.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false")});h.querySelectorAll("nav a").forEach(function(a){a.addEventListener("click",c)});document.addEventListener("click",function(e){if(!h.contains(e.target))c()});document.addEventListener("keydown",function(e){if(e.key==="Escape")c()})})();</script>
 </body>
-
 </html>
